@@ -1,3 +1,72 @@
 <html>
-  stll building
+    <head>
+        <title>Europing</title>
+        <link rel="stylesheet/css" type="text/css" href="social.css">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        
+    </head>
+    <body>
+        <div id="app" style="z-index: 1;">
+            <div :class="['bg', bg]">
+              <header>
+                
+            <nav>
+                
+                  <img style="width: 5vw; margin-bottom: 1vw; margin-left: 1vw;" class="link-bio" href="#bio" @click="bg = 'bio'" src="Immagini/Home-icon.svg"><br>
+                  <img style="width: 5vw; margin-bottom: 1vw; margin-left: 1vw;"  href="#projects" @click="bg = 'projects'" src="Immagini/calendar.svg"><br>
+                  <a href="https://www.booking.com/hotel/it/europing-village-marsia-neve.it.html"><img style="width: 5vw; margin-left: 1vw;" src="Immagini/bookingcom-1.svg"></a>
+                 
+            </nav>      
+                
+                <div class="transition transition-bio"></div>
+                <div class="transition transition-projects"></div>
+                <h1 style="font-family: 'Parisienne', cursive;">Europing<p1><br>Camping Village</p1></h1>
+              </header>
+
+
+
+
+
+              <main>
+                <transition name="slide-fade" mode="out-in">
+                  <h3 key="bio" v-if="bg==='bio'">LONTANO DAL MONDO, VICINO ALLA NATURA! <br><br><br><br>
+                    Benvenuti viaggiatori!<p></p><br> Che vogliate ritrovare il contatto con la natura, allontanarvi dalla frenesia della città o caricarvi di energia positiva, una vacanza a Europing Camping è proprio quello che ci vuole.
+                    <br><br> Situato nell’incantevole Marsia, tra le prime località sciistiche degli anni ’70 immersa nella natura incontaminata del Parco Naturale dei Monti Simbruini a 1450 metri di altitudine, il Camping rappresenta 
+                    il luogo ideale per staccare la spina e vivere in una dimensione diversa, dove le bellezze paesaggistiche e naturalistiche dominano incontrastate. 
+                    <br><br>Un angolo di paradiso dove tranquillità, relax e avventura rappresentano il mix perfetto per un soggiorno indimenticabile.</p>
+                    I nostri servizi:<br><img class="center-fit" src="Immagini/SHOW/gallery_2.jpg">
+                    <div class="transbox" width="1px">
+                    </div><img class="center-fit"  src="Immagini/SHOW/slideshow_9.jpg">
+                  
+                </h3>
+                  
+
+                  <p key="projects" v-if="bg==='projects'">Questa è una bacheca eventi.</p>
+                  
+
+                </transition>
+                <div class="footer-social-icons">
+                    <h3 class="_14">Seguici su:</h4>
+                    <ul class="social-icons">
+                        <li><a href="https://www.facebook.com/europing.marsia" class="social-icon"> <i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.instagram.com/europing_marsia/" class="social-icon"> <i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+              </main>
+
+
+
+
+
+
+
+            
+            </div>
+          </div>
+          <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+          <script src="script.js"></script>
+          <script src="script.babel"></script>
+          <script src="script.min.js"></script>
+          <script src="script.min.js.map"></script>
+    </body>
 </html>
