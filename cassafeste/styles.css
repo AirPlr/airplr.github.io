@@ -1,0 +1,85 @@
+/* Add a global box-sizing rule */
+* {
+    box-sizing: border-box;
+}
+
+/* Apply some basic styles to the body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Center the container */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Style the page title */
+h1 {
+    text-align: center;
+}
+
+/* Style the form */
+form {
+    margin-bottom: 20px;
+}
+
+/* Style the form groups */
+.form-group {
+    margin-bottom: 10px;
+}
+
+/* Style the input fields */
+input[type="number"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Style the buttons */
+button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Style the total price display */
+.total-price {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+/* Style the reset button */
+button[type="reset"] {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Style the counter section */
+.counter {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Style the counter value */
+#counter {
+    font-size: 30px;
+}
+
+/* Style the counter buttons */
+input[type="button"] {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 0 5px;
+}
