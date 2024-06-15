@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Document metadata -->
+    <meta charset="UTF-8">
+    <title>Menu Cibo e Bevande</title>
+    
+    <!-- External stylesheets -->
+    <style>
+        /* Importing Google Fonts */
+        @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
+        
+        /* Global styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        /* Container styles */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Form group styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input[type="number"] {
+            width: 100px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        .form-group button {
+            padding: 5px 10px;
+            background-color: #2196F3;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        /* Total price styles */
+        .total-price {
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+        /* Counter styles */
+        .counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Page title -->
+        <h1>Menu Cibo e Bevande</h1>
+        
+        <!-- Checkout section -->
+        <h2>Checkout</h2>
+        
+        <!-- Form -->
+        <form>
+            <!-- Panino input -->
+            <div class="form-group">
+                <label for="panino">Panino:</label>
+                <input type="number" id="panino" name="panino" min="0" value="0" onchange="calculateTotalPrice()">
+            </div>
+
+            <!-- Arrosticini input -->
+            <div class="form-group">
+                <label for="arrosticini">Arrosticini:</label>
+                <input type="number" id="arrosticini" name="arrosticini" min="0" value="0" onchange="calculateTotalPrice()">
+                
+                <!-- Arrosticini buttons -->
+                <button type="button" onclick="addArrosticini5()">Aggiungi 5</button>
+                <button type="button" onclick="addArrosticini10()">Aggiungi 10</button>
+            </div>
+
+            <!-- Lattina input -->
+            <div class="form-group">
+                <label for="lattina">Lattina:</label>
+                <input type="number" id="lattina" name="lattina" min="0" value="0" onchange="calculateTotalPrice()">
+            </div>
+
+            <!-- Acqua input -->
+            <div class="form-group">
+                <label for="acqua">Acqua:</label>
+                <input type="number" id="acqua" name="acqua" min="0" value="0" onchange="calculateTotalPrice()">
+            </div>
+
+            <!-- Birra input -->
+            <div class="form-group">
+                <label for="birra">Birra:</label>
+                <input type="number" id="birra" name="birra" min="0" value="0" onchange="calculateTotalPrice()">
+            </div>
+
+            <!-- Vino input -->
+            <div class="form-group">
+                <label for="vino">Vino:</label>
+                <input type="number" id="vino" name="vino" min="0" value="0" onchange="calculateTotalPrice()">
+            </div>
+
+            <!-- Total price display -->
+            <h2 class="total-price">Total Price: €0.00</h2>
+        </form>
+        
+        <!-- Reset button -->
+        <button type="button" onclick="resetForm()">Reset</button>
+    </div>
+
+    <div class="counter">
+        Turno Arrosticini: <span id="counter">0</span>
+        <input type="button" value="-" onclick="decrementCounter()">
+        <input type="button" value="+" onclick="incrementCounter()">
+    </div>
+
+
+    <!-- JavaScript code -->
+    <script>
+        // Function to increment counter
+        function incrementCounter() {
+            var counter = parseInt(document.getElementById('counter').textContent);
+            counter++;
+            document.getElementById('counter').textContent = counter;
+        }
+
+        // Function to decrement counter
+        function decrementCounter() {
+            var counter = parseInt(document.getElementById('counter').textContent);
+            counter--;
+            document.getElementById('counter').textContent = counter;
+        }
+
+        // Function to reset form
+        function resetForm() {
+            document.getElementById("panino").value = 0;
+            document.getElementById("arrosticini").value = 0;
+            document.getElementById("lattina").value = 0;
+            document.getElementById("acqua").value = 0;
+            document.getElementById("birra").value = 0;
+            document.getElementById("vino").value = 0;
+            calculateTotalPrice();
+        }
+
+        // Function to add 5 to arrosticini quantity
+        function addArrosticini5() {
+            var arrosticiniQuantity = parseInt(document.getElementById("arrosticini").value);
+            arrosticiniQuantity += 5;
+            document.getElementById("arrosticini").value = arrosticiniQuantity;
+            calculateTotalPrice();
+        }
+        
+        // Function to add 10 to arrosticini quantity
+        function addArrosticini10() {
+            var arrosticiniQuantity = parseInt(document.getElementById("arrosticini").value);
+            arrosticiniQuantity += 10;
+            document.getElementById("arrosticini").value = arrosticiniQuantity;
+            calculateTotalPrice();
+        }
+        
+        // Function to calculate total price
+        function calculateTotalPrice() {
+            // Prices per item
+            var paninoPrice = 2.50;
+            var arrosticiniPrice = 1.00;
+            var lattinaPrice = 1.50; // replace with actual price
+            var acquaPrice = 1.00; // replace with actual price
+            var birraPrice = 2.50; // replace with actual price
+            var vinoPrice = 3.00; // replace with actual price
+
+            // Quantity per item
+            var paninoQuantity = document.getElementById('panino').value;
+            var arrosticiniQuantity = document.getElementById('arrosticini').value;
+            var lattinaQuantity = document.getElementById('lattina').value;
+            var acquaQuantity = document.getElementById('acqua').value;
+            var birraQuantity = document.getElementById('birra').value;
+            var vinoQuantity = document.getElementById('vino').value;
+
+            // Calculate total price
+            var totalPrice = (paninoPrice * paninoQuantity) + (arrosticiniPrice * arrosticiniQuantity) + (lattinaPrice * lattinaQuantity) + (acquaPrice * acquaQuantity) + (birraPrice * birraQuantity) + (vinoPrice * vinoQuantity);
+
+            // Update total price display
+            document.querySelector('.total-price').textContent = 'Total Price: €' + totalPrice.toFixed(2);
+        }
+    </script>
+</body>
+</html>
