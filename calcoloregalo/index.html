@@ -21,6 +21,7 @@
     .result{margin-top:12px;font-weight:700;font-size:1rem;white-space:pre-wrap}
     .ev-list label{display:block;margin:6px 0}
     #guest-list .guest-row{display:flex;gap:8px;align-items:center;margin-top:6px}
+    .small-btn{padding:6px 8px;border-radius:6px;background:#eee;border:none;cursor:pointer}
     @media(max-width:880px){ .grid{grid-template-columns:1fr} }
   </style>
 </head>
@@ -62,10 +63,6 @@
               <option value="1.2">-- Sufficiente --</option>
               <option value="1.0">-- Normale --</option>
             </select>
-          </label>
-
-          <label>Numero Eventi (M)
-            <input id="M" type="number" min="1" value="1">
           </label>
 
           <fieldset class="ev-list" style="margin-top:12px;padding:10px;border-radius:6px;border:1px solid #eee">
@@ -117,20 +114,17 @@
       return amount + (multiple - rem);
     }
 
-    // Calcoli per ciascun tipo di evento (replicano la logica Python)
-    function calcMatrimonio(B,I,C,P,D,M){
+    // Calcoli per ciascun tipo di evento (senza moltiplicatore M)
+    function calcMatrimonio(B,I,C,P,D){
       let base = (B/2 + I) * (C + (C * 0.3)) * P * D;
-      let euro = M === 1 ? base : base * (1 + (M - 1) * 0.5);
-      // multiplo: 50 (anche per D non massimo, per compatibilità con lo script originale)
+      // multiplo: 50
       const multiple = 50;
-      return roundToMultiple(euro, multiple);
+      return roundToMultiple(base, multiple);
     }
 
-    function calcCompleanno(B,I,C,P,D,M,is18, guestMultiplier){
+    function calcCompleanno(B,I,C,P,D,is18, guestMultiplier){
       let base = (B/2 + I) * C * P * D;
       if (is18) base = base * 1.5;
-      let euro = M === 1 ? base : base * (1 + (M - 1) * 0.5);
-
       // arrotondamenti richiesti:
       // - normale: multipli di 5 (se D < 1.5), 10 se D>=1.5
       // - 18: multipli di 10 (se D < 1.5), 20 se D>=1.5
@@ -138,28 +132,25 @@
       if (is18) multiple = (D >= 1.5) ? 20 : 10;
       else multiple = (D >= 1.5) ? 10 : 5;
 
-      euro = roundToMultiple(euro, multiple);
+      let euro = roundToMultiple(base, multiple);
       return euro * (guestMultiplier || 1);
     }
 
-    function calcBattesimo(B,I,C,P,D,M){
+    function calcBattesimo(B,I,C,P,D){
       let base = (B/2 + I) * (C + (C * 0.1)) * P * D;
-      let euro = M === 1 ? base : base * (1 + (M - 1) * 0.5);
-      return roundToMultiple(euro, 20);
+      return roundToMultiple(base, 20);
     }
 
-    function calcComunione(B,I,C,P,D,M){
+    function calcComunione(B,I,C,P,D){
       let base = (B/2 + I) * (C + (C * 0.05)) * P * D;
-      let euro = M === 1 ? base : base * (1 + (M - 1) * 0.5);
       const multiple = (D >= 1.5) ? 50 : 20;
-      return roundToMultiple(euro, multiple);
+      return roundToMultiple(base, multiple);
     }
 
-    function calcCresima(B,I,C,P,D,M){
+    function calcCresima(B,I,C,P,D){
       let base = (B/2 + I) * (C + (C * 0.05)) * P * D;
-      let euro = M === 1 ? base : base * (1 + (M - 1) * 0.5);
       const multiple = (D >= 1.5) ? 50 : 20;
-      return roundToMultiple(euro, multiple);
+      return roundToMultiple(base, multiple);
     }
 
     // Calcolo del moltiplicatore dai dati invitati (età, lavoro) per compleanni
@@ -185,7 +176,10 @@
       const div = document.createElement('div');
       div.className = 'guest-row';
       div.style.marginTop = '6px';
-      div.innerHTML = `Età: <input class="g-age" type="number" min="0" value="30" style="width:72px"> Ha lavoro: <input class="g-emp" type="checkbox"> <button class="g-del" type="button">Rimuovi</button>`;
+      div.innerHTML = ''
+        + 'Età: <input class="g-age" type="number" min="0" value="30" style="width:72px"> '
+        + 'Ha lavoro: <input class="g-emp" type="checkbox"> '
+        + '<button class="g-del small-btn" type="button">Rimuovi</button>';
       // quando cambia l'età ricalcola B/I
       const ageInput = div.querySelector('.g-age');
       ageInput.addEventListener('change', ()=>{ updateBIFromGuests(); });
@@ -263,7 +257,6 @@
       const C = Number($('C').value) || 0;
       const P = Number($('P').value) || 1;
       const D = Number($('D').value) || 1;
-      const M = Number($('M').value) || 1;
 
       // raccogli eventi selezionati
       const events = Array.from(document.querySelectorAll('.ev')).filter(cb => cb.checked).map(cb => cb.value);
@@ -274,38 +267,61 @@
       const guestElems = Array.from(document.querySelectorAll('#guest-list .guest-row'));
       const guestMultiplier = computeGuestMultiplier(guestElems);
 
-      const breakdown = {};
+      // calcola il valore pieno per ogni evento
+      const fullValues = {};
       events.forEach(ev => {
         let value = 0;
-        if (ev === 'matrimonio') value = calcMatrimonio(B,I,C,P,D,M);
-        if (ev === 'battesimo') value = calcBattesimo(B,I,C,P,D,M);
-        if (ev === 'compleanno') value = calcCompleanno(B,I,C,P,D,M,false,guestMultiplier);
-        if (ev === 'compleanno18') value = calcCompleanno(B,I,C,P,D,M,true,guestMultiplier);
-        if (ev === 'comunione') value = calcComunione(B,I,C,P,D,M);
-        if (ev === 'cresima') value = calcCresima(B,I,C,P,D,M);
-        breakdown[ev] = value;
+        if (ev === 'matrimonio') value = calcMatrimonio(B,I,C,P,D);
+        if (ev === 'battesimo') value = calcBattesimo(B,I,C,P,D);
+        if (ev === 'compleanno') value = calcCompleanno(B,I,C,P,D,false,guestMultiplier);
+        if (ev === 'compleanno18') value = calcCompleanno(B,I,C,P,D,true,guestMultiplier);
+        if (ev === 'comunione') value = calcComunione(B,I,C,P,D);
+        if (ev === 'cresima') value = calcCresima(B,I,C,P,D);
+        fullValues[ev] = Number(Number(value).toFixed(2));
       });
 
-      // moltiplicatore per eventi contemporanei: +20% per evento oltre il primo
-      const mult = events.length <= 1 ? 1 : 1 + 0.2 * (events.length - 1);
-  let total = Object.values(breakdown).reduce((s,v)=>s+v,0) * mult;
+      // se selezionati più eventi: mantieni pieno il maggiore, dimezza tutti gli altri
+      let adjustedValues = {};
+      if (events.length === 1){
+        adjustedValues = Object.assign({}, fullValues);
+      } else {
+        // trova il valore massimo (se più valori uguali prende il primo)
+        let maxVal = -Infinity;
+        let maxKey = null;
+        for (const k of events){
+          if (fullValues[k] > maxVal){ maxVal = fullValues[k]; maxKey = k; }
+        }
+        events.forEach(k => {
+          if (k === maxKey) adjustedValues[k] = fullValues[k];
+          else adjustedValues[k] = Number((fullValues[k] / 2).toFixed(2));
+        });
+      }
 
-  // arrotondamento finale: se parentela è 'Amico' (P == 1.0) -> multipli di 5, altrimenti multipli di 10
-  const pVal = Number($('P').value) || 1;
-  const finalMultiple = (pVal === 1.0) ? 5 : 10;
-  const totalRounded = roundToMultiple(total, finalMultiple);
+      // sommatoria e arrotondamento finale
+      const rawTotal = Object.values(adjustedValues).reduce((s,v)=>s+v,0);
 
-  // mostra breakdown
-  let out = '';
-  for (const k in breakdown) out += `${k}: €${breakdown[k].toFixed(2)}\n`;
-  if (events.length > 1) out += `\nMoltiplicatore eventi simultanei: x${mult.toFixed(2)}\n`;
-  out += `\nTotale stimato (prima arrotondamento): €${total.toFixed(2)}`;
-  out += `\nTotale arrotondato: €${totalRounded.toFixed(2)} (multiplo di ${finalMultiple})`;
-  showResult(out);
+      // arrotondamento finale: se parentela è 'Amico' (P == 1.0) -> multipli di 5, altrimenti multipli di 10
+      const pVal = Number($('P').value) || 1;
+      const finalMultiple = (pVal === 1.0) ? 5 : 10;
+      const totalRounded = roundToMultiple(rawTotal, finalMultiple);
+
+      // mostra breakdown (mostra valore pieno e, se dimezzato, indica)
+      let out = '';
+      for (const k of events){
+        const full = fullValues[k];
+        const adj = adjustedValues[k];
+        if (adj === full) out += `${k}: €${full.toFixed(2)}\n`;
+        else out += `${k}: €${full.toFixed(2)} -> dimezzato -> €${adj.toFixed(2)}\n`;
+      }
+
+      out += `\nTotale stimato (dopo dimezzamenti): €${rawTotal.toFixed(2)}`;
+      out += `\nTotale arrotondato: €${totalRounded.toFixed(2)} (multiplo di ${finalMultiple})`;
+
+      showResult(out);
     });
 
     $('reset').addEventListener('click', ()=>{
-      $('B').value = 0; $('I').value = 0; $('C').value = 0; $('P').selectedIndex = 0; $('D').selectedIndex = 0; $('M').value = 1; $('guest-list').innerHTML = '';
+      $('B').value = 0; $('I').value = 0; $('C').value = 0; $('P').selectedIndex = 0; $('D').selectedIndex = 0; $('guest-list').innerHTML = '';
       document.querySelectorAll('.ev').forEach(cb => cb.checked = false);
       updateBirthdaySection();
       // rimuovi eventuali option temporanee forzate
