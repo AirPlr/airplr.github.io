@@ -1,1 +1,230 @@
-Placeholder news in html to show in an app
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BinBatt - Ecology News</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: rgb(29, 29, 70);
+            color: rgb(255, 255, 255);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3.5rem;
+            margin: 40px 0;
+            letter-spacing: 2px;
+            color: #f35626;
+            background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -webkit-animation: hue 10s infinite linear;
+        }
+
+        @-webkit-keyframes hue {
+            from {
+                -webkit-filter: hue-rotate(0deg);
+            }
+            to {
+                -webkit-filter: hue-rotate(-360deg);
+            }
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .news-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(243, 86, 38, 0.3);
+            border-color: rgba(243, 86, 38, 0.5);
+        }
+
+        .news-date {
+            color: #feab3a;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .news-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .news-category {
+            display: inline-block;
+            padding: 5px 15px;
+            background: linear-gradient(92deg, #f35626, #feab3a);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .news-excerpt {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .eco-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌍 Ecology News</h1>
+        
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="eco-icon">🌱</div>
+                <div class="news-date">December 15, 2025</div>
+                <span class="news-category">Renewable Energy</span>
+                <h2 class="news-title">Solar Power Reaches New Efficiency Milestone</h2>
+                <p class="news-excerpt">
+                    Scientists have developed a new solar panel technology that achieves 47% efficiency, 
+                    nearly double the current commercial standard. This breakthrough could revolutionize 
+                    renewable energy adoption worldwide.
+                </p>
+            </div>
+
+            <div class="news-card">
+                <div class="eco-icon">♻️</div>
+                <div class="news-date">December 12, 2025</div>
+                <span class="news-category">Recycling</span>
+                <h2 class="news-title">Revolutionary Plastic-Eating Enzyme Discovered</h2>
+                <p class="news-excerpt">
+                    Researchers have engineered a new enzyme that can break down plastic waste in hours 
+                    instead of centuries. This discovery offers hope for addressing the global plastic 
+                    pollution crisis.
+                </p>
+            </div>
+
+            <div class="news-card">
+                <div class="eco-icon">🌊</div>
+                <div class="news-date">December 10, 2025</div>
+                <span class="news-category">Ocean Conservation</span>
+                <h2 class="news-title">Ocean Cleanup Initiative Removes 1 Million Tons of Plastic</h2>
+                <p class="news-excerpt">
+                    The Ocean Cleanup project has successfully removed over 1 million tons of plastic 
+                    from the Pacific Ocean, marking a major milestone in marine conservation efforts.
+                </p>
+            </div>
+
+            <div class="news-card">
+                <div class="eco-icon">🌳</div>
+                <div class="news-date">December 8, 2025</div>
+                <span class="news-category">Reforestation</span>
+                <h2 class="news-title">Global Tree-Planting Campaign Reaches 1 Billion Trees</h2>
+                <p class="news-excerpt">
+                    A worldwide reforestation initiative has successfully planted its billionth tree, 
+                    helping to combat climate change and restore vital ecosystems across six continents.
+                </p>
+            </div>
+
+            <div class="news-card">
+                <div class="eco-icon">🔋</div>
+                <div class="news-date">December 5, 2025</div>
+                <span class="news-category">Battery Technology</span>
+                <h2 class="news-title">New Biodegradable Batteries Could Replace Lithium</h2>
+                <p class="news-excerpt">
+                    Engineers have created fully biodegradable batteries made from organic materials, 
+                    offering a sustainable alternative to traditional lithium-ion batteries for 
+                    electronic devices.
+                </p>
+            </div>
+
+            <div class="news-card">
+                <div class="eco-icon">🌾</div>
+                <div class="news-date">December 3, 2025</div>
+                <span class="news-category">Sustainable Agriculture</span>
+                <h2 class="news-title">Vertical Farming Reduces Water Usage by 95%</h2>
+                <p class="news-excerpt">
+                    New vertical farming techniques are transforming urban agriculture, using 95% less 
+                    water than traditional farming while producing higher yields in smaller spaces.
+                </p>
+            </div>
+
+            <div class="news-card">
+                <div class="eco-icon">🦋</div>
+                <div class="news-date">December 1, 2025</div>
+                <span class="news-category">Biodiversity</span>
+                <h2 class="news-title">Endangered Species Population Shows 30% Increase</h2>
+                <p class="news-excerpt">
+                    Conservation efforts have led to a 30% increase in several endangered species 
+                    populations, including tigers, elephants, and rhinoceros, across protected habitats.
+                </p>
+            </div>
+
+            <div class="news-card">
+                <div class="eco-icon">🌬️</div>
+                <div class="news-date">November 28, 2025</div>
+                <span class="news-category">Air Quality</span>
+                <h2 class="news-title">City Air Pollution Drops to Lowest Levels in Decades</h2>
+                <p class="news-excerpt">
+                    Major cities worldwide report significant improvements in air quality thanks to 
+                    stricter emissions regulations and increased adoption of electric vehicles.
+                </p>
+            </div>
+
+            <div class="news-card">
+                <div class="eco-icon">💧</div>
+                <div class="news-date">November 25, 2025</div>
+                <span class="news-category">Water Conservation</span>
+                <h2 class="news-title">Atmospheric Water Generators Provide Clean Drinking Water</h2>
+                <p class="news-excerpt">
+                    New technology that extracts water from air humidity is being deployed in drought-
+                    stricken regions, providing clean drinking water to communities without reliable 
+                    water sources.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
