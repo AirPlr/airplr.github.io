@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Lorenzo Imbastari</title>
-        <meta charset="UTF-8">
-        <meta name="description" content="Curriculum Vitae di Lorenzo Imbastari">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Curriculum Vitae di Lorenzo Imbastari" />
+        <meta name="theme-color" content="#0b1220" />
+        <title>Lorenzo Imbastari — Frontend Developer</title>
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
         <link rel="stylesheet" href="CSS/style.css">
         <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
         <link rel="stylesheet" href="CSS/nav.css"/>
@@ -29,11 +36,22 @@
             </div>
           </nav>
 
-        <div id="Title" class="Title">
-            <h1>Lorenzo Imbastari</h1>
-            <h2>Frontend Developer, Graphic Designer and Video Editor</h2>
-            <h3>Curriculum Vitae</h3>
-        </div>
+        <header class="hero">
+            <div class="container hero-inner">
+                <div class="hero-text">
+                    <h1 class="name">Lorenzo Imbastari</h1>
+                    <p class="subtitle">Frontend Developer • Graphic Designer • Video Editor</p>
+                    <div class="hero-ctas">
+                        <a class="btn btn-primary" href="https://github.com/AirPlr" target="_blank" rel="noopener">View Projects</a>
+                        <a class="btn btn-outline" href="mailto:lorenzoimbastari@gmail.com">Contact</a>
+                    </div>
+                </div>
+                <div class="hero-art">
+                    <img src="IMG/logoatksmall.png" alt="Lorenzo logo" class="profile" />
+                </div>
+            </div>
+        </header>
+
         <div id="infos" class="infos">
             <h2>Who am I?</h2>
             <div class="box">
@@ -91,23 +109,18 @@
             <h3>Email: <i>lorenzoimbastari@gmail.com</i></h3>
             </div>
 
-        <img src="IMG/logoatksmall.png" />
-        <script src="https://unpkg.com/boxicons@2.1.3/dist/boxicons.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <footer class="site-footer">
+            <div class="container">
+                <p>© <span id="year"></span> Lorenzo Imbastari — Built with ❤️</p>
+            </div>
+        </footer>
+        <script>/* year set below in lightweight script */</script>
+        <script src="https://unpkg.com/boxicons@2.1.3/dist/boxicons.js"></script> 
         <script>
-            $(window.addEventListener('scroll', function() {
-            var element = document.querySelector('#tophead');
-            var position = element.getBoundingClientRect();
-
-            // checking whether the div is visible
-            if(position.top < 0) {
-              // add class to make circle menu visible
-              document.querySelector('#Circlemenu').classList.add('visible');
-            } else {
-              // remove class to hide circle menu
-              document.querySelector('#Circlemenu').classList.remove('visible');
-            }
-          }));
-          </script>
+          // Lightweight scripts
+          document.addEventListener('DOMContentLoaded', function(){
+            document.getElementById('year')?.textContent = new Date().getFullYear();
+          });
+        </script> 
     </body>
 </html>
