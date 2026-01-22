@@ -8,6 +8,7 @@
     var $nav = $('nav'),
         $ul = $nav.find('ul'),
         $li = $ul.find('li').not('.slide');
+    var $toggle = $('.nav-toggle');
 
     // set first as active by default
     $li.removeClass('active');
@@ -26,12 +27,26 @@
       }
       $li.removeClass('active');
       $(this).closest('li').addClass('active');
+      // close mobile nav if open
+      if(window.innerWidth <= 700) {
+        $ul.removeClass('open');
+        $toggle.attr('aria-expanded', 'false');
+      }
     });
 
-    // if non-anchor li clicked (future), toggle active
-    $li.not(':has(a)').on('click', function(){
-      $li.removeClass('active');
-      $(this).addClass('active');
+    // Hamburger toggle
+    $toggle.on('click', function(){
+      var expanded = $ul.hasClass('open');
+      $ul.toggleClass('open');
+      $toggle.attr('aria-expanded', !expanded);
+    });
+
+    // Close nav on resize if desktop
+    $(window).on('resize', function(){
+      if(window.innerWidth > 700) {
+        $ul.removeClass('open');
+        $toggle.attr('aria-expanded', 'false');
+      }
     });
   });
 })(jQuery);

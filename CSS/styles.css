@@ -1,3 +1,79 @@
+/* Hamburger button styles */
+.nav-toggle {
+  display: none;
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  z-index: 100;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.nav-toggle .bar {
+  display: block;
+  width: 28px;
+  height: 4px;
+  margin: 4px 0;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+@media (max-width: 700px) {
+  .nav-toggle {
+    display: flex;
+  }
+  nav ul {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba(20,20,30,0.98);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s, opacity 0.3s;
+    overflow-x: hidden;
+    z-index: 99;
+  }
+  nav ul.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  nav li {
+    min-width: 180px;
+    height: auto;
+    line-height: 2.5;
+    font-size: 1.2rem;
+    padding: 0.7rem 0;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  nav {
+    height: 56px;
+    position: fixed;
+    top: 0;
+    bottom: auto;
+    background: var(--nav-bg);
+    z-index: 100;
+  }
+}
 /* styles.css — Portfolio styles based on provided reference
    Located at: /CSS/styles.css
 
