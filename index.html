@@ -1,90 +1,86 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lorenzo Imbastari - Developer</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </head>
 <body>
-<nav>
-  <ul>
-    <li><a href="Salfia.co">Home</a></li>
-    <li>About me</li>
-    <li>Portfolio</li>
-    <li>Blog</li>
-    <li>Contact me</li>
-    <li class="slide"></li>
-  </ul>
-</nav>
-<section>
-  <div class="title"><span>Jack Salfia</span><span>Graphic Designer and<a target="_blanck" href="salfia.com">Web Developer</a></span></div>
-</section>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About me</a></li>
+            <li><a href="#projects">Portfolio</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact me</a></li>
+            <li class="slide" aria-hidden="true"></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <div class="title">
+            <span>Lorenzo Imbastari</span>
+            <span>Full Stack Developer <a target="_blank" rel="noopener" href="https://maps.app.goo.gl/32kLLN3ogPG9zaDv9">Avezzano</a></span>
+        </div>
+    </section>
+
     <main>
-        <section>
+        <section id="about">
             <h3>About Me</h3>
             <p>Hello! I'm Lorenzo Imbastari, a passionate developer with experience in web development and software engineering. I love creating efficient and user-friendly applications.</p>
         </section>
-        <section>
+
+        <section id="education">
             <h3>Education</h3>
             <ul>
-            <li>High School Diploma in Computer Science from I.I.S. Ettore Majorana in Avezzano</li>
-            <li>Currently studying Computer Science at the University of L'Aquila</li>
+                <li>High School Diploma in Computer Science from I.I.S. Ettore Majorana in Avezzano</li>
+                <li>Currently studying Computer Science at the University of L'Aquila</li>
             </ul>
         </section>
-        <section>
+
+        <section id="projects">
             <h3>Projects</h3>
             <ul>
-                <li href="https://github.com/AirPlr/Ariacast-server"><strong>AriaCast:</strong> An Audio Streaming protocol (Music Assistant Integration)</li>
-                <li href="https://github.com/AirPlr/Smart_Control"><strong>Smart Control:</strong> A CRM-Like management software to track team and sales. (Mail me for the newer version)</li>
+                <li><a href="https://github.com/AirPlr/Ariacast-server">AriaCast</a>: An Audio Streaming protocol (Music Assistant Integration)</li>
+                <li><a href="https://github.com/AirPlr/Smart_Control">Smart Control</a>: CRM-like management software to track team and sales.</li>
             </ul>
         </section>
-        <section>
+
+        <section id="skills">
             <h3>Skills</h3>
             <ul>
-            <li>Italian Level: Mother Tongue</li>
-            <li>English Level: University of Cambridge B1</li>
-            <li>Cisco CLA: Programming in C</li>
-            <li>Programming Languages: JavaScript, PHP, Java, C, C++, Python</li>
-            <li>Graphic Design: Adobe Photoshop, Adobe Illustrator, Adobe InDesign, Figma</li>
+                <li>Italian: Mother Tongue</li>
+                <li>English: University of Cambridge B1</li>
+                <li>Cisco CLA: Programming in C</li>
+                <li>Programming Languages: JavaScript, PHP, Java, C, C++, Python</li>
+                <li>Graphic Design: Adobe Photoshop, Illustrator, InDesign, Figma</li>
             </ul>
         </section>
-        <section>
+
+        <section id="experiences">
             <h3>Experiences</h3>
-            <ul>Erasmus+ Project in Poland</ul>
-                
-            <ul>Robotics:
-                <li>2019: MakeX (Rome) 13th place</li>           
+            <p>Erasmus+ Project in Poland</p>
+            <h4>Robotics</h4>
+            <ul>
+                <li>2019: MakeX (Rome) 13th place</li>
                 <li>2021: Wro (Italy) 1st place</li>
                 <li>2021: Wro (World Cup - Stoos) 34th place</li>
                 <li>2022: ROBOCUP (Trento) 2nd Place</li>
             </ul>
-            <ul>
-                Android Mobile Development "Velino Safety" with the city of Massa d'Albe, I.I.S. Ettore Majorana and University of L'Aquila
-            </ul>   
-            
-        <section>
+            <p>Android Mobile Development "Velino Safety" with the city of Massa d'Albe, I.I.S. Ettore Majorana and University of L'Aquila.</p>
+        </section>
+
+        <section id="contact">
             <h3>Contact</h3>
-            <p>You can reach me at <a href="mailto:lorenzoimbastari@gmail.com"> lorenzoimbastari@gmail.com </a></p>
+            <p>You can reach me at <a href="mailto:lorenzoimbastari@gmail.com">lorenzoimbastari@gmail.com</a></p>
         </section>
     </main>
 
-    <script>
-    (function($){
-      // variables
-      var elementWidth = $('nav ul').width(),
-          containerWidth = $('nav').width(),
-          difference = elementWidth - containerWidth,
-          finalWidth = difference * 1.5,
-          element = $('nav ul');
-      
-      // active on click
-      $('nav li').on('click', function(){
-        $('nav li').removeClass('active');
-        $(this).addClass('active');
-      });
-      
-    })(jQuery);
-    </script>
+    <!-- scripts: jQuery then local nav behavior -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="assets/js/script.js"></script>
+
 </body>
 </html>
