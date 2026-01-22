@@ -6,6 +6,7 @@
         <meta name="description" content="Curriculum Vitae di Lorenzo Imbastari" />
         <meta name="theme-color" content="#0b1220" />
         <title>Lorenzo Imbastari — Frontend Developer</title>
+        <link rel="icon" href="assets/illustrations/favicon.svg" type="image/svg+xml">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,18 +43,28 @@
                     <h1 class="name">Lorenzo Imbastari</h1>
                     <p class="subtitle">Frontend Developer • Graphic Designer • Video Editor</p>
                     <div class="hero-ctas">
-                        <a class="btn btn-primary" href="https://github.com/AirPlr" target="_blank" rel="noopener">View Projects</a>
-                        <a class="btn btn-outline" href="mailto:lorenzoimbastari@gmail.com">Contact</a>
+                        <a class="btn btn-primary" href="https://github.com/AirPlr" target="_blank" rel="noopener">View Projects <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a>
+                        <a class="btn btn-outline" href="mailto:lorenzoimbastari@gmail.com">Contact <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 8.5l9 5 9-5M21 6H3v12h18V6z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a>
                     </div>
                 </div>
-                <div class="hero-art">
-                    <img src="IMG/logoatksmall.png" alt="Lorenzo logo" class="profile" />
+                <div class="hero-art" aria-hidden="true">
+                    <!-- Decorative gradient blob -->
+                    <svg class="hero-decor" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                      <defs>
+                        <linearGradient id="heroGradient" x1="0" x2="1" y1="0" y2="1">
+                          <stop offset="0%" stop-color="#f35626"/>
+                          <stop offset="100%" stop-color="#feab3a"/>
+                        </linearGradient>
+                      </defs>
+                      <path fill="url(#heroGradient)" d="M421.5,323.5Q392,397,323.5,426.5Q255,456,182,420Q109,384,71.5,318Q34,252,70.5,188Q107,124,170,92.5Q233,61,304.5,60.5Q376,60,424.5,111Q473,162,444,229.5Q415,297,421.5,323.5Z"/>
+                    </svg>
+                    <img src="assets/illustrations/hero-illustration.svg" alt="Lorenzo illustration" class="hero-illustration" />
                 </div>
             </div>
         </header>
 
         <div id="infos" class="infos">
-            <h2>Who am I?</h2>
+            <h2 class="section-title">Who am I?</h2>
             <div class="box">
             <h3>I'm Lorenzo Imbastari</h3>
             <h3>I'm 20 years old</h3>
@@ -65,14 +76,14 @@
             <br>
         </div>
         <div id="Studies" class="Studies">
-            <h2>Studies:</h2>
+            <h2 class="section-title">Studies:</h2>
             <div class="box">
             <h3>High School Diploma in <i>Computer Science</i> from I.I.S. Ettore Majorana in Avezzano</h3>
             <h3>Currently studying <i>Information Engineering</i> at the <i>University of L'Aquila</i></h3><br>
             </div>
         </div>
         <div id="Skills" class="Skills">
-            <h2>Skills:</h2>
+            <h2 class="section-title">Skills:</h2>
             <div class="box">
             <h3>Italian Level: <i>Mother Tongue</i></h3>
             <h3>English Level: <i>University of Cambridge B1</i></h3>
@@ -83,7 +94,7 @@
             </div>
         </div>
         <div id="Experiences" class="Experiences">
-            <h2>Experiences:</h2>
+            <h2 class="section-title">Experiences:</h2>
             <div class="box">
             <h3>Erasmus+ Project in <i>Poland</i></h3>
             <h3>CLA: Programming Essentials in C</h3>
@@ -97,21 +108,21 @@
         </div>
 
         <div id="PersonalProjects" class="PersonalProjects">
-            <h2>Personal Projects:</h2>
+            <h2 class="section-title">Personal Projects:</h2>
             <div class="box">
             <h3>Arduino Music Visualizer: <a href="https://github.com/AirPlr/arduino_music_visualizer">Check it out on Github</a></a></h3>
             </div>  
         </div>
 
         <div id="Contacts" class="Contacts">
-            <h2>Contacts:</h2>
+            <h2 class="section-title">Contacts:</h2>
             <h3>Phone Number: <i>+39 389 506 3190</i></h3>
             <h3>Email: <i>lorenzoimbastari@gmail.com</i></h3>
             </div>
 
         <footer class="site-footer">
             <div class="container">
-                <p>© <span id="year"></span> Lorenzo Imbastari — Built with ❤️</p>
+                <p>© <span id="year"></span> Lorenzo Imbastari — Built with <svg class="heart" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" style="vertical-align: -2px; margin-left:6px;"><defs><linearGradient id="fh" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#f35626"/><stop offset="100%" stop-color="#feab3a"/></linearGradient></defs><path d="M12 21s-7.5-4.7-10-8.1C-0.8 7.6 3 3 6.7 6.7 8.6 8.6 12 11 12 11s3.4-2.4 5.3-4.3C21 3 24.8 7.6 22 12.9 19.5 16.3 12 21 12 21z" fill="url(#fh)"/></svg></p>
             </div>
         </footer>
         <script>/* year set below in lightweight script */</script>

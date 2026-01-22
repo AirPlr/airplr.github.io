@@ -25,12 +25,31 @@ body{
 .hero-ctas{ margin-top:18px; display:flex; gap:12px; }
 .btn{ display:inline-block; padding:10px 18px; border-radius:10px; text-decoration:none; font-weight:600; }
 .btn-primary{ background:linear-gradient(90deg,var(--accent1),var(--accent2)); color:#071029; box-shadow:0 8px 24px rgba(243,86,38,0.14); }
-.btn-outline{ border:1px solid rgba(255,255,255,0.08); color:var(--muted); background:transparent; }
-.profile{ width:120px; height:120px; object-fit:cover; border-radius:16px; border:1px solid rgba(255,255,255,0.06); box-shadow:0 10px 30px rgba(0,0,0,0.45); }
+.btn-outline{ border:1px solid rgba(255,255,255,0.08); color:var(--muted); background:transparent; }  .btn-icon{ width:16px; height:16px; margin-left:8px; vertical-align:middle; display:inline-block; color:inherit; }
+  .btn-outline .btn-icon{ color:var(--muted); }
+  .btn-primary .btn-icon{ color:#071029; }.profile{ width:120px; height:120px; object-fit:cover; border-radius:16px; border:1px solid rgba(255,255,255,0.06); box-shadow:0 10px 30px rgba(0,0,0,0.45); }
+
+/* New illustration & decorative blob styles */
+.hero-art{ position:relative; display:flex; align-items:center; justify-content:center; width:340px; height:340px; }
+.hero-decor{ position:absolute; width:420px; height:420px; transform:translate(10px,-10px) rotate(-10deg); opacity:0.95; z-index:0; filter:blur(8px); }
+.hero-illustration{ position:relative; z-index:1; width:280px; height:auto; border-radius:20px; box-shadow:0 18px 40px rgba(3,8,20,0.6); background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:12px; }
+@keyframes float { 0%{transform:translateY(0)} 50%{transform:translateY(-8px)} 100%{transform:translateY(0)} }
+.hero-illustration{ animation: float 6s ease-in-out infinite; }
+
+@media (max-width:800px){
+  .hero-art{ width:220px; height:220px; }
+  .hero-decor{ width:260px; height:260px; transform:translate(0,0) rotate(-6deg); }
+  .hero-illustration{ width:168px; }
+}
 
 /* Sections and boxes */
 .section{ padding:60px 0; }
 .section h2{ margin:0 0 18px 0; font-size:1.5rem; color:#fff; }
+
+/* Section headings with decorative gradient marker */
+.section-title{ display:inline-flex; align-items:center; gap:12px; font-size:1.25rem; }
+.section-title::before{ content:''; display:inline-block; width:14px; height:14px; border-radius:50%; background:linear-gradient(90deg,var(--accent1),var(--accent2)); box-shadow:0 6px 18px rgba(243,86,38,0.12); }
+
 .box{ margin-top:20px; padding:22px; background: rgba(255,255,255,0.03); border-radius:16px; border:1px solid rgba(255,255,255,0.06); box-shadow:0 8px 30px rgba(2,6,23,0.6); text-align:left; }
 
 .infos, .Studies, .Skills, .Experiences, .PersonalProjects, .Contacts{ margin-top:40px; font-size:18px; scroll-margin-top:80px; }

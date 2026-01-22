@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Minimal friendly avatar illustration (keeps things simple and open-source friendly) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" role="img" aria-labelledby="title desc">
+  <title id="title">Friendly avatar illustration</title>
+  <desc id="desc">Abstract avatar with warm gradient and soft shapes</desc>
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f35626"/>
+      <stop offset="100%" stop-color="#feab3a"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffecd2" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#fcb69f" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <!-- soft blob background -->
+  <g fill="none" fill-rule="evenodd">
+    <path fill="url(#g1)" opacity="0.95" d="M420 290c30 90-20 180-120 170S110 320 60 220C10 120 110 20 200 30s190 40 220 260z"/>
+
+    <!-- torso -->
+    <ellipse cx="240" cy="330" rx="120" ry="70" fill="#0f1724" opacity="0.55"/>
+
+    <!-- face -->
+    <circle cx="240" cy="200" r="72" fill="url(#g2)" stroke="#000" stroke-opacity="0.04"/>
+
+    <!-- hair -->
+    <path d="M186 170c10-40 96-58 118-26 18 26 6 64-14 80-36 28-96 26-112-54z" fill="#0f1724"/>
+
+    <!-- eyes -->
+    <ellipse cx="220" cy="200" rx="8" ry="6" fill="#0b1220"/>
+    <ellipse cx="260" cy="200" rx="8" ry="6" fill="#0b1220"/>
+
+    <!-- smile -->
+    <path d="M210 225c10 12 40 12 52 0" stroke="#0b1220" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+    <!-- stylized glasses (optional) -->
+    <g stroke="#071029" stroke-opacity="0.12" stroke-width="4" fill="none">
+      <rect x="200" y="184" width="24" height="16" rx="6"/>
+      <rect x="252" y="184" width="24" height="16" rx="6"/>
+      <path d="M224 192h24"/>
+    </g>
+  </g>
+</svg>
