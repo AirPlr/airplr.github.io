@@ -211,3 +211,60 @@ section .title span a::after {
 }
 
 /* End of file */
+/* Panel styles: make each section look like the home hero */
+section.panel {
+  min-height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+  box-sizing: border-box;
+}
+
+/* center inner content and constrain width */
+section.panel .panel-inner,
+section.panel .title,
+section.panel > div {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* headings and body content style to match hero */
+section.panel h3,
+section.panel .title span:first-child {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  margin: 0 0 0.5rem 0;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+section.panel p,
+section.panel li {
+  color: #dcdcdc;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+section.panel ul { list-style: none; padding: 0; margin: 1rem 0 0 0; }
+section.panel ul li { margin: 0.5rem 0; }
+
+/* subtle alternating background for sections inside main */
+main > section.panel:nth-child(odd) { background-color: #161616; }
+main > section.panel:nth-child(even) { background-color: #111111; }
+
+/* keep home visually prominent */
+section#home.panel { background-color: var(--bg); }
+
+/* improve link accent visibility */
+section.panel a { color: var(--accent); text-decoration: underline; }
+
+/* reduce hero animation on non-home sections */
+section.panel .title span { transform: none; animation: none; }
+
+@media (max-width: 900px) {
+  section.panel { padding: 3rem 1rem; }
+  section.panel h3 { font-size: 2rem; }
+}
