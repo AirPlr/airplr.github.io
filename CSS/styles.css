@@ -1,0 +1,213 @@
+/* styles.css — Portfolio styles based on provided reference
+   Located at: /CSS/styles.css
+
+   - Includes styles for the bottom-fixed navigation and hero section
+   - Adds accessibility focus, mobile behavior and small fixes for anchors inside <li>
+   - Requires jQuery for the small nav behavior script (already added inline in index.html)
+*/
+
+:root {
+  --bg: #1b1b1b;
+  --nav-bg: #0b0b0b;
+  --nav-active-bg: #151515;
+  --accent: #f7ca18;
+  --muted: #555;
+  --text: #efefef;
+}
+
+/* Basic reset */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  padding: 0 0 100px 0; /* bottom padding to avoid content hidden behind fixed nav */
+  font-family: 'Open Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: inherit; text-decoration: none; }
+
+::selection { background-color: var(--accent); color: #1b1b1b; }
+
+/* NAV */
+nav {
+  width: 100%;
+  background-color: var(--nav-bg);
+  position: fixed;
+  bottom: 0;
+  height: 100px;
+  overflow: hidden;
+  z-index: 50;
+}
+
+nav ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 140vw; /* allows sliding behaviour */
+}
+
+nav li {
+  margin: 0;
+  float: left;
+  display: inline-block;
+  height: 98px;
+  margin-bottom: 2px;
+  line-height: 100px;
+  width: 20vw;
+  text-align: center;
+  color: var(--muted);
+  transition: background-color 0.5s 0.2s ease, color 0.3s ease;
+  cursor: pointer;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 800;
+  transform: translateY(100%);
+  position: relative;
+}
+
+/* ensure anchors inside nav li expand to full area */
+nav li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 100px;
+  color: inherit;
+}
+
+nav li.active { background-color: var(--nav-active-bg); color: var(--text); }
+
+nav li.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent);
+}
+
+/* staggered pop-in animation */
+nav li:nth-child(1) { animation: pop 0.5s 0.15s 1 forwards; }
+nav li:nth-child(2) { animation: pop 0.5s 0.3s 1 forwards; }
+nav li:nth-child(3) { animation: pop 0.5s 0.45s 1 forwards; }
+nav li:nth-child(4) { animation: pop 0.5s 0.6s 1 forwards; }
+nav li:nth-child(5) { animation: pop 0.5s 0.75s 1 forwards; }
+nav li:nth-child(6) { animation: pop 0.5s 0.9s 1 forwards; }
+nav li:nth-child(7) { animation: pop 0.5s 1.05s 1 forwards; }
+
+nav li:hover { color: #ececec; }
+nav li:active { background-color: #222; }
+nav li:focus { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+/* sliding indicator (moves on :hover via sibling combinator) */
+nav li:nth-child(1):hover ~ .slide { left: 0; }
+nav li:nth-child(2):hover ~ .slide { left: 20vw; }
+nav li:nth-child(3):hover ~ .slide { left: 40vw; }
+nav li:nth-child(4):hover ~ .slide { left: 60vw; }
+nav li:nth-child(5):hover ~ .slide { left: 80vw; }
+nav li:nth-child(6):hover ~ .slide { left: 100vw; }
+nav li:nth-child(7):hover ~ .slide { left: 120vw; }
+
+nav li.slide {
+  position: absolute;
+  left: -20vw;
+  top: 0;
+  background-color: #fff;
+  z-index: -1;
+  height: 2px;
+  margin-top: 98px;
+  transition: left 0.3s ease;
+  transform: translateY(0);
+}
+
+/* SECTION / HERO */
+section {
+  background-color: var(--bg);
+  height: 100vh;
+  display: flex;
+}
+
+section .title {
+  max-width: 60%;
+  width: 100%;
+  align-self: center;
+  transform: translateY(-50px);
+  margin: 0 auto;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+
+section .title span {
+  display: inline-block;
+  font-size: 5vw;
+  color: var(--text);
+  width: 100%;
+  text-transform: uppercase;
+  transform: translateX(-100%);
+  animation: byBottom 1s ease both;
+  font-weight: 600;
+  letter-spacing: 0.25vw;
+}
+
+section .title span:last-child {
+  font-size: 1rem;
+  animation: byBottom 1s 0.25s ease both;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+section .title span a {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.5rem;
+  text-decoration: none;
+  color: var(--accent);
+}
+
+section .title span a::after {
+  content: "";
+  height: 2px;
+  background-color: var(--accent);
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 0;
+  animation: linkAfter 0.5s 1s ease both;
+}
+
+/* KEYFRAMES */
+@keyframes pop { 0% { transform: translateY(100%); } 100% { transform: translateY(0); } }
+@keyframes byBottom { 0% { transform: translateY(150%); } 100% { transform: translateY(0); } }
+@keyframes linkAfter { 0% { width: 0; } 100% { width: 30px; } }
+
+/* Vendor prefixes for broader support (kept minimal) */
+@-webkit-keyframes pop { 0% { transform: translateY(100%);} 100% { transform: translateY(0);} }
+@-webkit-keyframes byBottom { 0% { transform: translateY(150%);} 100% { transform: translateY(0);} }
+@-webkit-keyframes linkAfter { 0% { width: 0;} 100% { width: 30px;} }
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  section .title { max-width: 90%; padding: 0 1rem; }
+  section .title span { font-size: 8vw; letter-spacing: 0.1rem; }
+  nav { height: 80px; }
+  nav li { line-height: 80px; font-size: 11px; }
+}
+
+@media (max-width: 600px) {
+  /* move nav to top for small screens for better accessibility */
+  nav { top: 0; bottom: auto; height: 64px; }
+  nav ul { width: 200vw; }
+  nav li { height: 62px; line-height: 64px; width: 33.3333vw; font-size: 10px; letter-spacing: 2px; }
+  nav li.slide { margin-top: 62px; }
+  section .title span { font-size: 9vw; }
+}
+
+/* End of file */
