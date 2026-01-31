@@ -37,9 +37,9 @@
 
         /* The base shifting deep space gradient */
         body {
-            background: linear-gradient(135deg, #000000, #1a0b2e, #0f0518, #000000);
-            background-size: 400% 400%;
-            animation: gradient-flow 20s ease infinite;
+            background: transparent; /* Changed from the gradient */
+            color: #fff;
+            font-family: var(--font-main);
         }
 
         @keyframes gradient-flow {
@@ -52,9 +52,14 @@
         .galaxy-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; /* Behind content */
+            z-index: -1; 
             overflow: hidden;
             pointer-events: none;
+    
+            /* Paste the animation here */
+            background: linear-gradient(135deg, #000000, #1a0b2e, #0f0518, #000000);
+            background-size: 400% 400%;
+            animation: gradient-flow 20s ease infinite;
         }
 
         /* Nebula Orbs */
@@ -477,3 +482,4 @@
     </script>
 </body>
 </html>
+
