@@ -1,1 +1,160 @@
-<html></html>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AriaCast Ecosystem | The Open Alternative to Google Cast</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            500: '#8b5cf6', // Purple-ish theme to match audio vibes
+                            600: '#7c3aed',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-900 text-slate-200 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <header class="relative overflow-hidden bg-slate-950 pt-24 pb-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6">
+                Stream audio openly with <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-blue-400">AriaCast</span>
+            </h1>
+            <p class="mt-4 text-xl text-slate-400 max-w-3xl mx-auto mb-10">
+                The lightweight, bidirectional audio streaming protocol for Android. Think of it as AirPlay for Android—cast high-fidelity audio from any app to any network speaker or Music Assistant setup.
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="#ecosystem" class="bg-brand-600 hover:bg-brand-500 text-white font-semibold py-3 px-8 rounded-full transition duration-300 shadow-lg shadow-brand-500/30">
+                    Explore the Ecosystem
+                </a>
+                <a href="https://github.com/AirPlr" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 px-8 rounded-full transition duration-300 flex items-center gap-2">
+                    <i class="fab fa-github"></i> Follow AirPlr
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-24 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white">Why AriaCast?</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-brand-500 transition">
+                    <div class="w-12 h-12 bg-brand-500/20 rounded-lg flex items-center justify-center mb-4 text-brand-400 text-xl">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">High-Quality Audio</h3>
+                    <p class="text-slate-400 text-sm">Streams at 48kHz 16-bit stereo PCM, ensuring your music sounds exactly as it should without heavy compression.</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-brand-500 transition">
+                    <div class="w-12 h-12 bg-brand-500/20 rounded-lg flex items-center justify-center mb-4 text-brand-400 text-xl">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Easy Discovery</h3>
+                    <p class="text-slate-400 text-sm">Automatic server detection over your local network using UDP broadcast (port 12888). No manual IP typing required.</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-brand-500 transition">
+                    <div class="w-12 h-12 bg-brand-500/20 rounded-lg flex items-center justify-center mb-4 text-brand-400 text-xl">
+                        <i class="fas fa-compact-disc"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Full Metadata</h3>
+                    <p class="text-slate-400 text-sm">Real-time synchronization of track title, artist, album, duration, position, and artwork across your devices.</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-brand-500 transition">
+                    <div class="w-12 h-12 bg-brand-500/20 rounded-lg flex items-center justify-center mb-4 text-brand-400 text-xl">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Remote Control</h3>
+                    <p class="text-slate-400 text-sm">Bidirectional WebSockets allow your servers to send play, pause, next, and previous commands right back to your phone.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ecosystem" class="py-24 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold text-white mb-4">The AriaCast Ecosystem</h2>
+                <p class="text-slate-400 max-w-2xl">AriaCast is modular by design. You need a sender (the Android app) and a receiver. Choose the receiver that fits your setup.</p>
+            </div>
+
+            <div class="space-y-6">
+                
+                <a href="https://github.com/AirPlr/AriaCast-app" target="_blank" class="block bg-slate-900 border border-slate-800 hover:border-brand-500 rounded-2xl p-6 md:p-8 transition group">
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <i class="fab fa-android text-green-400 text-2xl"></i>
+                                <h3 class="text-2xl font-bold text-white group-hover:text-brand-400 transition">AriaCast App (The Sender)</h3>
+                            </div>
+                            <p class="text-slate-400">The core Android application built with Kotlin. It captures system audio and casts it directly to your chosen AriaCast server.</p>
+                        </div>
+                        <span class="text-brand-500 font-medium whitespace-nowrap">View Repo <i class="fas fa-arrow-right ml-1"></i></span>
+                    </div>
+                </a>
+
+                <a href="https://github.com/AirPlr/AriaCast-Receiver-MusicAssistant" target="_blank" class="block bg-slate-900 border border-slate-800 hover:border-brand-500 rounded-2xl p-6 md:p-8 transition group">
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <i class="fas fa-home text-blue-400 text-2xl"></i>
+                                <h3 class="text-2xl font-bold text-white group-hover:text-brand-400 transition">Music Assistant Receiver</h3>
+                            </div>
+                            <p class="text-slate-400">A custom provider for the popular Home Assistant add-on, Music Assistant. Cast audio from your phone to any speaker group in your smart home.</p>
+                        </div>
+                        <span class="text-brand-500 font-medium whitespace-nowrap">View Repo <i class="fas fa-arrow-right ml-1"></i></span>
+                    </div>
+                </a>
+
+                <a href="https://github.com/AirPlr/Ariacast-server" target="_blank" class="block bg-slate-900 border border-slate-800 hover:border-brand-500 rounded-2xl p-6 md:p-8 transition group">
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <i class="fab fa-python text-yellow-400 text-2xl"></i>
+                                <h3 class="text-2xl font-bold text-white group-hover:text-brand-400 transition">AriaCast Server (Python)</h3>
+                            </div>
+                            <p class="text-slate-400">A lightweight, standalone bidirectional server script using WebSockets. Perfect for Raspberry Pi or custom networked speakers.</p>
+                        </div>
+                        <span class="text-brand-500 font-medium whitespace-nowrap">View Repo <i class="fas fa-arrow-right ml-1"></i></span>
+                    </div>
+                </a>
+
+                <a href="https://github.com/AirPlr/AriaCast-Server-GO" target="_blank" class="block bg-slate-900 border border-slate-800 hover:border-brand-500 rounded-2xl p-6 md:p-8 transition group">
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <i class="fas fa-server text-cyan-400 text-2xl"></i>
+                                <h3 class="text-2xl font-bold text-white group-hover:text-brand-400 transition">AriaCast Server (Go)</h3>
+                            </div>
+                            <p class="text-slate-400">The high-performance, compiled alternative server written in Go for maximum efficiency and speed.</p>
+                        </div>
+                        <span class="text-brand-500 font-medium whitespace-nowrap">View Repo <i class="fas fa-arrow-right ml-1"></i></span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 border-t border-slate-800 py-12 text-center">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="text-slate-500 mb-4">Developed by Lorenzo Imbastari (AirPlr). Open Source and built for the community.</p>
+            <div class="flex justify-center gap-6">
+                <a href="https://github.com/AirPlr" target="_blank" class="text-slate-400 hover:text-white transition text-2xl">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
