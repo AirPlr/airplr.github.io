@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AriaCast Protocol Specification</title>
+    <style>
+        :root {
+            --bg-color: #f9fafb;
+            --text-color: #374151;
+            --heading-color: #111827;
+            --primary-color: #6366f1;
+            --border-color: #e5e7eb;
+            --code-bg: #1f2937;
+            --inline-code-bg: #f3f4f6;
+            --accent-bg: #eef2ff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        main {
+            background: #ffffff;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        h1, h2, h3 {
+            color: var(--heading-color);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            margin-top: 0;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h2 { font-size: 1.5rem; }
+        h3 { font-size: 1.25rem; }
+
+        p { margin-bottom: 1.25rem; }
+
+        hr {
+            border: 0;
+            border-top: 1px solid var(--border-color);
+            margin: 2.5rem 0;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+        
+        th, td {
+            text-align: left;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--inline-code-bg);
+            font-weight: 600;
+        }
+
+        /* Code Block Styling */
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            background-color: var(--inline-code-bg);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #ef4444;
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            padding: 1.25rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        pre code {
+            background-color: transparent;
+            color: #e5e7eb;
+            padding: 0;
+            font-size: 0.9em;
+        }
+
+        /* Callout/Blockquote Styling */
+        blockquote {
+            background-color: var(--accent-bg);
+            border-left: 4px solid var(--primary-color);
+            margin: 2rem 0;
+            padding: 1rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            color: #312e81;
+        }
+
+        blockquote p { margin: 0; }
+        blockquote ul { margin-top: 0.5rem; margin-bottom: 0; }
+    </style>
+</head>
+<body>
+
+    <main>
+        <header>
+            <h1>📡 AriaCast Protocol</h1>
+            <p>AriaCast is a lightweight, bidirectional audio streaming protocol designed for real-time, low-latency audio transmission over local networks. Built as a modern alternative to AirPlay and VBAN, AriaCast relies on <strong>UDP</strong> for rapid discovery and <strong>TCP (WebSockets/HTTP)</strong> for reliable streaming and control.</p>
+        </header>
+
+        <hr>
+
+        <section>
+            <h2>🏗 Network Architecture</h2>
+            <p>AriaCast operates on a standard Client-Server model. The <strong>Client</strong> (e.g., your smartphone) captures local audio and streams it to the <strong>Server</strong> (the receiver), which processes the incoming PCM audio and handles playback control.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Port (Default)</th>
+                        <th>Protocol</th>
+                        <th>Direction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Discovery</strong></td>
+                        <td><code>12888</code></td>
+                        <td>UDP</td>
+                        <td>Broadcast</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Streaming & API</strong></td>
+                        <td><code>12889</code></td>
+                        <td>TCP (WS/HTTP)</td>
+                        <td>Bidirectional</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>🔄 Protocol Flow</h2>
+
+            <h3>1. Discovery (UDP)</h3>
+            <p>To find available receivers on the network, the client broadcasts a discovery packet.</p>
+            <p><strong>Client Broadcast:</strong></p>
+<pre><code>DISCOVER_AUDIOCAST</code></pre>
+
+            <p><strong>Server Response:</strong></p>
+            <p>The server replies with a JSON payload detailing its connection parameters:</p>
+<pre><code>{
+  "server_name": "AriaCast Speaker",
+  "ip": "192.168.1.100",
+  "port": 12889,
+  "samplerate": 48000,
+  "channels": 2
+}</code></pre>
+
+            <h3>2. Connection & Handshake (WebSocket)</h3>
+            <p>Once discovered, the client establishes a WebSocket connection to the <code>/audio</code> endpoint. The server immediately responds with a handshake configuration to align audio settings.</p>
+            <p><strong>Server → Client Handshake:</strong></p>
+<pre><code>{
+  "status": "READY",
+  "type": "handshake",
+  "sampleRate": 48000,
+  "channels": 2,
+  "sampleWidth": 2,
+  "frameSize": 3840
+}</code></pre>
+
+            <h3>3. Audio Streaming</h3>
+            <p>Audio is transmitted as raw binary data through the established WebSocket.</p>
+            
+            <blockquote>
+                <p>💡 <strong>Audio Format Details:</strong></p>
+                <ul>
+                    <li><strong>Encoding:</strong> PCM 16-bit Signed Little-Endian, Stereo, 48kHz.</li>
+                    <li><strong>Packet Size:</strong> Exactly <strong>3840 bytes</strong> per frame (representing 20ms of audio).</li>
+                    <li><strong>Buffering:</strong> AriaCast typically uses a 300ms pre-buffer to handle local network jitter effectively.</li>
+                </ul>
+            </blockquote>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>🔌 API Endpoints</h2>
+            <p>AriaCast uses a mix of standard HTTP POST requests for state and WebSockets for real-time control.</p>
+
+            <h3>Sync Metadata</h3>
+            <p><code>POST /metadata</code><br>
+            Pushes real-time track information from the client to the server.</p>
+            <p><strong>Payload:</strong></p>
+<pre><code>{
+  "data": {
+    "title": "Song Title",
+    "artist": "Artist Name",
+    "album": "Album Name",
+    "artworkUrl": "https://example.com/cover.jpg",
+    "durationMs": 180000,
+    "positionMs": 45000,
+    "isPlaying": true
+  }
+}</code></pre>
+
+            <h3>Remote Control</h3>
+            <p><code>WS /control</code><br>
+            Enables bidirectional remote control. The server/receiver UI can send commands back to the source app.</p>
+            <p><strong>Supported Messages (Server → Client):</strong><br>
+            <code>play</code>, <code>pause</code>, <code>next</code>, <code>previous</code>, <code>toggle</code>, <code>stop</code></p>
+
+            <h3>Health & Stats</h3>
+            <p><code>WS /stats</code><br>
+            The server pushes playback health statistics back to the client for debugging and quality monitoring.</p>
+            <p><strong>Payload:</strong></p>
+<pre><code>{
+  "bufferedFrames": 15,
+  "droppedFrames": 0,
+  "receivedFrames": 12345
+}</code></pre>
+        </section>
+    </main>
+
+</body>
+</html>
