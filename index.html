@@ -1,32 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lorenzo Imbastari | Full Stack Developer</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+
     <style>
-        html.lenis, html.lenis body { height: auto; }
-        .lenis.lenis-smooth { scroll-behavior: auto !important; }
-        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-        .lenis.lenis-stopped { overflow: hidden; }
+        html.lenis,
+        html.lenis body {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
     </style>
 
     <style>
         :root {
             --accent-purple: #814ac8;
             --accent-pink: #df7afe;
-            --accent-deep: #3b0764; /* Deeper purple for space */
+            --accent-deep: #3b0764;
+            /* Deeper purple for space */
             --font-main: 'Figtree', sans-serif;
             --text-grey: rgba(255, 255, 255, 0.85);
         }
 
         /* 1. RESET & BASE GRADIENT */
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
             width: 100%;
@@ -37,25 +53,37 @@
 
         /* The base shifting deep space gradient */
         body {
-            background: transparent; /* Changed from the gradient */
+            background: transparent;
+            /* Changed from the gradient */
             color: #fff;
             font-family: var(--font-main);
         }
 
         @keyframes gradient-flow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         /* --- GALAXY ENGINE (Fixed Background Layers) --- */
         .galaxy-container {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
             overflow: hidden;
             pointer-events: none;
-    
+
             /* Paste the animation here */
             background: linear-gradient(135deg, #000000, #1a0b2e, #0f0518, #000000);
             background-size: 400% 400%;
@@ -66,43 +94,80 @@
         .orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(100px); /* Massive blur for gaseous look */
+            filter: blur(100px);
+            /* Massive blur for gaseous look */
             opacity: 0.4;
-            mix-blend-mode: screen; /* Makes them glow when overlapping */
+            mix-blend-mode: screen;
+            /* Makes them glow when overlapping */
             will-change: transform;
         }
 
         .orb-1 {
-            width: 70vw; height: 70vw;
-            top: -15%; left: -15%;
+            width: 70vw;
+            height: 70vw;
+            top: -15%;
+            left: -15%;
             background: radial-gradient(circle, var(--accent-pink), transparent 70%);
             animation: drift-1 40s ease-in-out infinite alternate;
         }
 
         .orb-2 {
-            width: 80vw; height: 80vw;
-            bottom: -20%; right: -20%;
+            width: 80vw;
+            height: 80vw;
+            bottom: -20%;
+            right: -20%;
             background: radial-gradient(circle, var(--accent-purple), transparent 70%);
             animation: drift-2 50s ease-in-out infinite alternate-reverse;
         }
 
         .orb-3 {
-            width: 60vw; height: 60vw;
-            top: 30%; right: 20%;
+            width: 60vw;
+            height: 60vw;
+            top: 30%;
+            right: 20%;
             background: radial-gradient(circle, var(--accent-deep), transparent 70%);
             opacity: 0.3;
             animation: drift-3 60s ease-in-out infinite alternate;
         }
 
-        @keyframes drift-1 { from { transform: translate(0,0) rotate(0deg); } to { transform: translate(10%, 15%) rotate(10deg); } }
-        @keyframes drift-2 { from { transform: translate(0,0) rotate(0deg); } to { transform: translate(-15%, -10%) rotate(-15deg); } }
-        @keyframes drift-3 { from { transform: translate(0,0) scale(1); } to { transform: translate(-5%, 10%) scale(1.2); } }
+        @keyframes drift-1 {
+            from {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            to {
+                transform: translate(10%, 15%) rotate(10deg);
+            }
+        }
+
+        @keyframes drift-2 {
+            from {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-15%, -10%) rotate(-15deg);
+            }
+        }
+
+        @keyframes drift-3 {
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+
+            to {
+                transform: translate(-5%, 10%) scale(1.2);
+            }
+        }
 
         /* Starfields (Parallax Layers) */
         .stars {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 200%;
-            background-image: 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            background-image:
                 radial-gradient(1px 1px at 20px 30px, #fff, transparent),
                 radial-gradient(1px 1px at 40px 70px, #fff, transparent),
                 radial-gradient(1px 1px at 50px 160px, #fff, transparent),
@@ -123,8 +188,13 @@
         }
 
         @keyframes star-move {
-            from { transform: translateY(0); }
-            to { transform: translateY(-50%); }
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-50%);
+            }
         }
 
 
@@ -181,7 +251,7 @@
             font-weight: 600;
             letter-spacing: 0.3em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             margin-top: 25px;
         }
 
@@ -194,11 +264,13 @@
 
         /* Very Transparent Glass Cards */
         .glass-panel {
-            background: rgba(255, 255, 255, 0.02); /* Subtle fill */
+            background: rgba(255, 255, 255, 0.02);
+            /* Subtle fill */
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 40px;
             border-radius: 24px;
-            backdrop-filter: blur(8px); /* Low blur to see stars behind */
+            backdrop-filter: blur(8px);
+            /* Low blur to see stars behind */
             text-align: left;
             transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
@@ -207,7 +279,7 @@
             transform: translateY(-10px);
             background: rgba(255, 255, 255, 0.05);
             border-color: var(--accent-pink);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .grid-2 {
@@ -217,14 +289,18 @@
             width: 100%;
         }
 
-        p, li {
+        p,
+        li {
             font-size: 19px;
             line-height: 1.6;
             margin: 0 0 12px 0;
             color: var(--text-grey);
         }
 
-        ul { padding-left: 20px; margin: 0; }
+        ul {
+            padding-left: 20px;
+            margin: 0;
+        }
 
         .label {
             color: var(--accent-pink);
@@ -245,7 +321,10 @@
             margin-bottom: 8px;
             transition: color 0.2s;
         }
-        a.project-link:hover { color: var(--accent-pink); }
+
+        a.project-link:hover {
+            color: var(--accent-pink);
+        }
 
         /* Button */
         .cta-btn {
@@ -256,13 +335,14 @@
             text-decoration: none;
             font-weight: 700;
             font-size: 18px;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             transition: 0.3s;
             display: inline-flex;
             align-items: center;
             gap: 12px;
             margin-top: 30px;
         }
+
         .cta-btn:hover {
             background: var(--accent-pink);
             transform: scale(1.05);
@@ -280,15 +360,17 @@
             flex-direction: column;
             gap: 18px;
         }
+
         .dot {
             width: 10px;
             height: 10px;
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 50%;
             cursor: pointer;
             transition: 0.4s;
             border: 1px solid transparent;
         }
+
         .dot.active {
             background: var(--accent-pink);
             transform: scale(1.5);
@@ -303,22 +385,52 @@
             animation: bounce 2s infinite;
             cursor: pointer;
         }
+
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         /* Mobile */
         @media(max-width: 768px) {
-            .grid-2 { grid-template-columns: 1fr; }
-            .nav-dots { display: none; }
-            h1 { font-size: 14vw; }
-            section { padding: 60px 20px; min-height: auto; margin-bottom: 50px; }
-            #hero { min-height: 90vh; }
-            .orb { width: 120vw; height: 120vw; opacity: 0.3; }
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-dots {
+                display: none;
+            }
+
+            h1 {
+                font-size: 14vw;
+            }
+
+            section {
+                padding: 60px 20px;
+                min-height: auto;
+                margin-bottom: 50px;
+            }
+
+            #hero {
+                min-height: 90vh;
+            }
+
+            .orb {
+                width: 120vw;
+                height: 120vw;
+                opacity: 0.3;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div class="galaxy-container">
@@ -347,7 +459,7 @@
             </div>
             <div class="scroll-indicator" data-target="#about">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
                 </svg>
             </div>
         </section>
@@ -356,8 +468,10 @@
             <div class="content-wrap">
                 <h2>About Me</h2>
                 <div class="glass-panel" style="text-align: center;">
-                    <p style="font-size: 24px; font-weight: 600; color: #fff; margin-bottom: 15px;">Hello! I'm Lorenzo Imbastari.</p>
-                    <p>A passionate developer with experience in web development and software engineering. I love creating efficient and user-friendly applications.</p>
+                    <p style="font-size: 24px; font-weight: 600; color: #fff; margin-bottom: 15px;">Hello! I'm Lorenzo
+                        Imbastari.</p>
+                    <p>A passionate developer with experience in web development and software engineering. I love
+                        creating efficient and user-friendly applications.</p>
                 </div>
             </div>
         </section>
@@ -381,11 +495,10 @@
         <section id="projects">
             <div class="content-wrap">
                 <h2>Projects</h2>
-                <div class="grid-2">
-                    <div class="glass-panel">
-                        <a href="https://airplr.github.io/ariacast" class="project-link">AriaCast↗</a>
-                        <p>An audio streaming protocol</p>
-                    </div>
+                <div class="glass-panel" style="text-align: center; max-width: 500px; margin: 0 auto;">
+                    <a href="https://airplr.github.io/ariacast" class="project-link"
+                        style="display: inline-block;">AriaCast↗</a>
+                    <p style="margin-bottom: 0;">An audio streaming protocol</p>
                 </div>
             </div>
         </section>
@@ -433,7 +546,11 @@
                 <h2>Get in touch</h2>
                 <a href="mailto:lorenzoimbastari@gmail.com" class="cta-btn">
                     Contact Me
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
                 </a>
             </div>
         </section>
@@ -469,7 +586,7 @@
                     entry.target.classList.add('active');
                     document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
                     const dot = document.getElementById('dot-' + entry.target.id);
-                    if(dot) dot.classList.add('active');
+                    if (dot) dot.classList.add('active');
                 }
             });
         }, { threshold: 0.4 });
@@ -477,12 +594,5 @@
         document.querySelectorAll('section').forEach(sec => observer.observe(sec));
     </script>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
