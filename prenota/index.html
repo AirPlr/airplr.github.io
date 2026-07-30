@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Richiedi un Servizio | Lorenzo Imbastari</title>
+    <meta name="description" content="Richiedi grafica, video editing, sviluppo software o assistenza tecnica a Lorenzo Imbastari.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --accent-purple: #814ac8;
+            --accent-pink: #df7afe;
+            --accent-deep: #3b0764;
+            --font-main: 'Figtree', sans-serif;
+            --text-grey: rgba(255, 255, 255, 0.85);
+            --ok-green: #4ade80;
+            --err-red: #f87171;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: #000;
+            color: #fff;
+            font-family: var(--font-main);
+        }
+
+        body {
+            color: #fff;
+        }
+
+        @keyframes gradient-flow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .galaxy-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+            background: linear-gradient(135deg, #000000, #1a0b2e, #0f0518, #000000);
+            background-size: 400% 400%;
+            animation: gradient-flow 20s ease infinite;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            mix-blend-mode: screen;
+            will-change: transform;
+        }
+
+        .orb-1 {
+            width: 70vw;
+            height: 70vw;
+            top: -15%;
+            left: -15%;
+            background: radial-gradient(circle, var(--accent-pink), transparent 70%);
+            animation: drift-1 40s ease-in-out infinite alternate;
+        }
+
+        .orb-2 {
+            width: 80vw;
+            height: 80vw;
+            bottom: -20%;
+            right: -20%;
+            background: radial-gradient(circle, var(--accent-purple), transparent 70%);
+            animation: drift-2 50s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes drift-1 {
+            from {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            to {
+                transform: translate(10%, 15%) rotate(10deg);
+            }
+        }
+
+        @keyframes drift-2 {
+            from {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-15%, -10%) rotate(-15deg);
+            }
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            background-image:
+                radial-gradient(1px 1px at 20px 30px, #fff, transparent),
+                radial-gradient(1px 1px at 40px 70px, #fff, transparent),
+                radial-gradient(1px 1px at 50px 160px, #fff, transparent),
+                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                radial-gradient(1px 1px at 130px 80px, #fff, transparent),
+                radial-gradient(1.5px 1.5px at 160px 120px, #a78bfa, transparent);
+            background-size: 200px 200px;
+            background-repeat: repeat;
+            opacity: 0.6;
+            animation: star-move 100s linear infinite;
+        }
+
+        @keyframes star-move {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-50%);
+            }
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px 120px;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0 40px;
+        }
+
+        .back-link {
+            color: var(--text-grey);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--accent-pink);
+        }
+
+        header.hero {
+            text-align: center;
+            padding: 40px 0 60px;
+        }
+
+        h1 {
+            font-size: clamp(40px, 8vw, 72px);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            margin: 0;
+            background: linear-gradient(to bottom, #ffffff, #e0ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(223, 122, 254, 0.3));
+        }
+
+        .subtitle {
+            font-size: 17px;
+            font-weight: 500;
+            color: var(--text-grey);
+            margin-top: 20px;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        h2 {
+            font-size: clamp(26px, 5vw, 34px);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin: 0 0 24px 0;
+        }
+
+        section {
+            margin-top: 70px;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 32px;
+            border-radius: 24px;
+            backdrop-filter: blur(8px);
+            text-align: left;
+        }
+
+        /* Service cards */
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 24px;
+            cursor: pointer;
+            transition: 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            text-align: left;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent-pink);
+        }
+
+        .service-card.selected {
+            border-color: var(--accent-pink);
+            background: rgba(223, 122, 254, 0.08);
+            box-shadow: 0 0 30px rgba(223, 122, 254, 0.15);
+        }
+
+        .service-card svg {
+            color: var(--accent-pink);
+            margin-bottom: 14px;
+        }
+
+        .service-card h3 {
+            margin: 0 0 6px 0;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--text-grey);
+            line-height: 1.5;
+        }
+
+        /* Form */
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--accent-pink);
+            margin: 20px 0 8px 0;
+        }
+
+        label:first-of-type {
+            margin-top: 0;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 14px 16px;
+            font-family: var(--font-main);
+            font-size: 16px;
+            color: #fff;
+            transition: 0.2s;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-pink);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        select option {
+            background: #1a0b2e;
+            color: #fff;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .hint {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 6px;
+        }
+
+        /* Buttons */
+        .cta-btn {
+            background: var(--accent-purple);
+            color: white;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            font-family: var(--font-main);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 28px;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover:not(:disabled) {
+            background: var(--accent-pink);
+            transform: scale(1.03);
+            box-shadow: 0 0 40px rgba(223, 122, 254, 0.6);
+        }
+
+        .cta-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .cta-btn.secondary:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: none;
+            transform: none;
+        }
+
+        /* Status / result messages */
+        .msg {
+            margin-top: 20px;
+            padding: 16px 18px;
+            border-radius: 14px;
+            font-size: 15px;
+            line-height: 1.5;
+            display: none;
+        }
+
+        .msg.show {
+            display: block;
+        }
+
+        .msg.error {
+            background: rgba(248, 113, 113, 0.1);
+            border: 1px solid rgba(248, 113, 113, 0.3);
+            color: #fecaca;
+        }
+
+        .msg.success {
+            background: rgba(74, 222, 128, 0.08);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            color: #d9f9e5;
+        }
+
+        .code-display {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            color: var(--ok-green);
+            margin: 10px 0;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            background: rgba(223, 122, 254, 0.15);
+            border: 1px solid var(--accent-pink);
+            color: #fff;
+        }
+
+        .status-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .status-row input {
+            flex: 1;
+            text-transform: uppercase;
+        }
+
+        .config-warning {
+            background: rgba(248, 113, 113, 0.12);
+            border: 1px solid rgba(248, 113, 113, 0.4);
+            color: #fecaca;
+            padding: 16px 20px;
+            border-radius: 14px;
+            font-size: 14px;
+            margin-bottom: 30px;
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--text-grey);
+        }
+
+        @media(max-width: 640px) {
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .status-row {
+                flex-direction: column;
+            }
+
+            .glass-panel {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="galaxy-container">
+        <div class="stars"></div>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <main>
+        <div class="topbar">
+            <a href="../" class="back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Lorenzo Imbastari
+            </a>
+        </div>
+
+        <header class="hero">
+            <h1>Richiedi un<br>Servizio</h1>
+            <p class="subtitle">Grafica, video editing, sviluppo software o assistenza tecnica: scegli cosa ti
+                serve, raccontami il progetto e ti ricontatto io. Pagamenti e dettagli si concordano a mano, come
+                sempre.</p>
+        </header>
+
+        <div id="config-warning" class="config-warning">
+            ⚠️ Il modulo non è ancora collegato al backend: imposta <code>SCRIPT_URL</code> in
+            <code>prenota/index.html</code> con l'URL della Web App di Apps Script (vedi
+            <code>prenota/README.md</code>).
+        </div>
+
+        <section id="servizi">
+            <h2>Che servizio ti serve?</h2>
+            <div class="service-grid">
+                <div class="service-card" data-service="Grafica">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="13.5" cy="6.5" r="0.5"></circle>
+                        <circle cx="17.5" cy="10.5" r="0.5"></circle>
+                        <circle cx="8.5" cy="7.5" r="0.5"></circle>
+                        <circle cx="6.5" cy="12.5" r="0.5"></circle>
+                        <path
+                            d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.1 0 2-.9 2-2 0-.5-.2-1-.5-1.4-.3-.4-.5-.8-.5-1.4 0-1.1.9-2 2-2h2.4c2.3 0 4.1-1.8 4.1-4.1C21.5 6 17.2 2 12 2z">
+                        </path>
+                    </svg>
+                    <h3>Grafica</h3>
+                    <p>Loghi, brand identity, locandine, social media, illustrazioni.</p>
+                </div>
+                <div class="service-card" data-service="Video Editing">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="6" width="14" height="12" rx="2"></rect>
+                        <path d="M22 8.5l-6 3.5 6 3.5v-7z"></path>
+                    </svg>
+                    <h3>Video Editing</h3>
+                    <p>Montaggio, sottotitoli, color correction, contenuti social.</p>
+                </div>
+                <div class="service-card" data-service="Sviluppo Software">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                    <h3>Sviluppo Software</h3>
+                    <p>Siti web, app, script, automazioni, bug fixing.</p>
+                </div>
+                <div class="service-card" data-service="Assistenza Tecnica">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M14.7 6.3a4 4 0 0 1-5.6 5.6L3 18v3h3l6.1-6.1a4 4 0 0 1 5.6-5.6l-3.1 3.1-2-2z">
+                        </path>
+                    </svg>
+                    <h3>Assistenza Tecnica</h3>
+                    <p>PC, reti, configurazioni, problemi vari, consulenza.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="richiesta">
+            <div class="glass-panel">
+                <h2>Descrivi la richiesta</h2>
+                <form id="request-form">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" placeholder="Come ti chiami" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="dove ti rispondo" required>
+                    <div class="hint">Ti mando qui il codice per controllare lo stato della richiesta.</div>
+
+                    <label for="servizio">Servizio</label>
+                    <select id="servizio" name="servizio" required>
+                        <option value="" disabled selected>Scegli un servizio</option>
+                        <option value="Grafica">Grafica</option>
+                        <option value="Video Editing">Video Editing</option>
+                        <option value="Sviluppo Software">Sviluppo Software</option>
+                        <option value="Assistenza Tecnica">Assistenza Tecnica</option>
+                        <option value="Altro">Altro</option>
+                    </select>
+
+                    <label for="descrizione">Di cosa hai bisogno?</label>
+                    <textarea id="descrizione" name="descrizione"
+                        placeholder="Racconta il progetto: cosa serve, per quando, riferimenti utili..."
+                        required></textarea>
+
+                    <label for="note">Note aggiuntive <span
+                            style="text-transform: none; color: var(--text-grey); font-weight: 500;">(facoltativo)</span></label>
+                    <textarea id="note" name="note" placeholder="Budget indicativo, scadenza, altro..."
+                        style="min-height: 70px;"></textarea>
+
+                    <button type="submit" class="cta-btn" id="submit-btn">
+                        Invia richiesta
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+
+                    <div class="msg error" id="form-error"></div>
+                </form>
+
+                <div class="msg success" id="form-success">
+                    <div>Richiesta inviata! Il tuo codice di riferimento:</div>
+                    <div class="code-display" id="result-code"></div>
+                    <div>Te l'ho anche mandato via email. Usalo qui sotto per controllare lo stato.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="stato">
+            <div class="glass-panel">
+                <h2>Controlla lo stato di una richiesta</h2>
+                <p style="margin-top: -10px; color: var(--text-grey);">Inserisci il codice ricevuto via email (es.
+                    PRQ-4F7K92).</p>
+                <div class="status-row">
+                    <input type="text" id="status-code" placeholder="PRQ-XXXXXX">
+                    <button type="button" class="cta-btn secondary" id="status-btn" style="margin-top: 0;">
+                        Controlla stato
+                    </button>
+                </div>
+                <div class="msg error" id="status-error"></div>
+                <div class="msg success" id="status-result">
+                    <p style="margin: 0 0 6px 0;"><strong id="status-servizio"></strong></p>
+                    <span class="status-badge" id="status-badge"></span>
+                    <p class="hint" id="status-updated" style="margin-top: 14px;"></p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Preferisci scrivermi direttamente? <a
+                    href="mailto:lorenzoimbastari@gmail.com">lorenzoimbastari@gmail.com</a></p>
+        </footer>
+    </main>
+
+    <script>
+        // Sostituisci con l'URL della Web App di Apps Script dopo il deploy (vedi prenota/README.md).
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyaYVhXd9F2t1RMZh1tyw0umXdo_sRIw9p2QtApV8FYwzfwexsJSoG-se2E-HzkGBlS/exec";
+
+        const isConfigured = !SCRIPT_URL.includes("PASTE_YOUR");
+        if (!isConfigured) {
+            document.getElementById('config-warning').classList.add('show');
+            document.getElementById('config-warning').style.display = 'block';
+        }
+
+        // --- Selezione servizio dalle card ---
+        const cards = document.querySelectorAll('.service-card');
+        const servizioSelect = document.getElementById('servizio');
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                cards.forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                servizioSelect.value = card.dataset.service;
+                document.getElementById('richiesta').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        servizioSelect.addEventListener('change', () => {
+            cards.forEach(c => c.classList.toggle('selected', c.dataset.service === servizioSelect.value));
+        });
+
+        // --- Invio richiesta ---
+        const form = document.getElementById('request-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const formError = document.getElementById('form-error');
+        const formSuccess = document.getElementById('form-success');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            formError.classList.remove('show');
+
+            if (!isConfigured) {
+                formError.textContent = 'Il modulo non è ancora configurato. Scrivimi direttamente via email nel frattempo.';
+                formError.classList.add('show');
+                return;
+            }
+
+            const payload = {
+                action: 'submit',
+                nome: document.getElementById('nome').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                servizio: servizioSelect.value,
+                descrizione: document.getElementById('descrizione').value.trim(),
+                note: document.getElementById('note').value.trim()
+            };
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Invio in corso...';
+
+            try {
+                const res = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+
+                if (data.ok) {
+                    form.style.display = 'none';
+                    document.getElementById('result-code').textContent = data.code;
+                    formSuccess.classList.add('show');
+                } else {
+                    formError.textContent = data.error || 'Qualcosa è andato storto. Riprova o scrivimi via email.';
+                    formError.classList.add('show');
+                }
+            } catch (err) {
+                formError.textContent = 'Errore di connessione. Riprova o scrivimi direttamente via email.';
+                formError.classList.add('show');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Invia richiesta <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>';
+            }
+        });
+
+        // --- Controllo stato ---
+        const statusBtn = document.getElementById('status-btn');
+        const statusCode = document.getElementById('status-code');
+        const statusError = document.getElementById('status-error');
+        const statusResult = document.getElementById('status-result');
+
+        statusBtn.addEventListener('click', async () => {
+            statusError.classList.remove('show');
+            statusResult.classList.remove('show');
+
+            const code = statusCode.value.trim().toUpperCase();
+            if (!code) {
+                statusError.textContent = 'Inserisci un codice.';
+                statusError.classList.add('show');
+                return;
+            }
+
+            if (!isConfigured) {
+                statusError.textContent = 'Il modulo non è ancora configurato.';
+                statusError.classList.add('show');
+                return;
+            }
+
+            statusBtn.disabled = true;
+            statusBtn.textContent = 'Verifico...';
+
+            try {
+                const res = await fetch(`${SCRIPT_URL}?code=${encodeURIComponent(code)}`);
+                const data = await res.json();
+
+                if (data.ok) {
+                    document.getElementById('status-servizio').textContent = data.servizio;
+                    document.getElementById('status-badge').textContent = data.stato;
+                    document.getElementById('status-updated').textContent = 'Ultimo aggiornamento: ' + data.aggiornato;
+                    statusResult.classList.add('show');
+                } else {
+                    statusError.textContent = data.error || 'Codice non trovato.';
+                    statusError.classList.add('show');
+                }
+            } catch (err) {
+                statusError.textContent = 'Errore di connessione. Riprova più tardi.';
+                statusError.classList.add('show');
+            } finally {
+                statusBtn.disabled = false;
+                statusBtn.textContent = 'Controlla stato';
+            }
+        });
+
+        statusCode.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') statusBtn.click();
+        });
+    </script>
+</body>
+
+</html>
