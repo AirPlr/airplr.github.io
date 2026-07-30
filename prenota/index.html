@@ -329,6 +329,66 @@
             margin-top: 6px;
         }
 
+        input[type="file"] {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 12px 14px;
+            font-family: var(--font-main);
+            font-size: 14px;
+            color: var(--text-grey);
+        }
+
+        input[type="file"]::file-selector-button {
+            background: var(--accent-purple);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-family: var(--font-main);
+            font-weight: 700;
+            font-size: 13px;
+            margin-right: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        input[type="file"]::file-selector-button:hover {
+            background: var(--accent-pink);
+        }
+
+        .file-list {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .file-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 8px 12px;
+            font-size: 13px;
+            color: var(--text-grey);
+        }
+
+        .file-remove {
+            background: transparent;
+            border: none;
+            color: var(--err-red);
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 0 4px;
+            line-height: 1;
+        }
+
         /* Buttons */
         .cta-btn {
             background: var(--accent-purple);
@@ -576,6 +636,12 @@
                     <textarea id="note" name="note" placeholder="Budget indicativo, scadenza, altro..."
                         style="min-height: 70px;"></textarea>
 
+                    <label for="allegati">Allega immagini <span
+                            style="text-transform: none; color: var(--text-grey); font-weight: 500;">(facoltativo, max 5, 5MB l'una)</span></label>
+                    <input type="file" id="allegati" name="allegati" accept="image/*" multiple>
+                    <div class="hint">Foto o screenshot utili (bozze, riferimenti, errori da mostrare).</div>
+                    <div id="allegati-list" class="file-list"></div>
+
                     <button type="submit" class="cta-btn" id="submit-btn">
                         Invia richiesta
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -611,7 +677,10 @@
                 <div class="msg success" id="status-result">
                     <p style="margin: 0 0 6px 0;"><strong id="status-servizio"></strong></p>
                     <span class="status-badge" id="status-badge"></span>
-                    <p class="hint" id="status-updated" style="margin-top: 14px;"></p>
+                    <p class="hint" id="status-iniziata" style="margin-top: 14px;"></p>
+                    <p class="hint" id="status-completata"></p>
+                    <p class="hint" id="status-tempo"></p>
+                    <p class="hint" id="status-updated"></p>
                 </div>
             </div>
         </section>
@@ -649,11 +718,72 @@
             cards.forEach(c => c.classList.toggle('selected', c.dataset.service === servizioSelect.value));
         });
 
+        // --- Allegati (immagini) ---
+        const MAX_FILES = 5;
+        const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+        const MAX_TOTAL_SIZE = 20 * 1024 * 1024; // 20MB combinati
+
+        let selectedFiles = [];
+        const fileInput = document.getElementById('allegati');
+        const filesList = document.getElementById('allegati-list');
+
+        fileInput.addEventListener('change', () => {
+            const incoming = Array.from(fileInput.files || []);
+            let totalSize = selectedFiles.reduce((sum, f) => sum + f.size, 0);
+
+            for (const f of incoming) {
+                if (selectedFiles.length >= MAX_FILES) break;
+                if (!f.type.startsWith('image/')) continue;
+                if (f.size > MAX_FILE_SIZE) continue;
+                if (totalSize + f.size > MAX_TOTAL_SIZE) continue;
+                selectedFiles.push(f);
+                totalSize += f.size;
+            }
+
+            fileInput.value = '';
+            renderFilesList();
+        });
+
+        function renderFilesList() {
+            filesList.innerHTML = '';
+            selectedFiles.forEach((f, idx) => {
+                const row = document.createElement('div');
+                row.className = 'file-row';
+
+                const label = document.createElement('span');
+                label.textContent = f.name + ' (' + (f.size / 1024 / 1024).toFixed(1) + ' MB)';
+
+                const removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.className = 'file-remove';
+                removeBtn.textContent = '✕';
+                removeBtn.setAttribute('aria-label', 'Rimuovi ' + f.name);
+                removeBtn.addEventListener('click', () => {
+                    selectedFiles.splice(idx, 1);
+                    renderFilesList();
+                });
+
+                row.appendChild(label);
+                row.appendChild(removeBtn);
+                filesList.appendChild(row);
+            });
+        }
+
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(String(reader.result).split(',')[1] || '');
+                reader.onerror = () => reject(new Error('read-error'));
+                reader.readAsDataURL(file);
+            });
+        }
+
         // --- Invio richiesta ---
         const form = document.getElementById('request-form');
         const submitBtn = document.getElementById('submit-btn');
         const formError = document.getElementById('form-error');
         const formSuccess = document.getElementById('form-success');
+        const submitBtnDefaultHtml = submitBtn.innerHTML;
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -671,10 +801,29 @@
                 email: document.getElementById('email').value.trim(),
                 servizio: servizioSelect.value,
                 descrizione: document.getElementById('descrizione').value.trim(),
-                note: document.getElementById('note').value.trim()
+                note: document.getElementById('note').value.trim(),
+                allegati: []
             };
 
             submitBtn.disabled = true;
+
+            if (selectedFiles.length > 0) {
+                submitBtn.textContent = 'Preparazione immagini...';
+                try {
+                    payload.allegati = await Promise.all(selectedFiles.map(async (f) => ({
+                        filename: f.name,
+                        mimeType: f.type || 'image/jpeg',
+                        data: await fileToBase64(f)
+                    })));
+                } catch (err) {
+                    formError.textContent = 'Errore nella lettura delle immagini. Riprova.';
+                    formError.classList.add('show');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = submitBtnDefaultHtml;
+                    return;
+                }
+            }
+
             submitBtn.textContent = 'Invio in corso...';
 
             try {
@@ -697,7 +846,7 @@
                 formError.classList.add('show');
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = 'Invia richiesta <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>';
+                submitBtn.innerHTML = submitBtnDefaultHtml;
             }
         });
 
@@ -734,6 +883,9 @@
                 if (data.ok) {
                     document.getElementById('status-servizio').textContent = data.servizio;
                     document.getElementById('status-badge').textContent = data.stato;
+                    document.getElementById('status-iniziata').textContent = data.iniziata ? 'Iniziata il: ' + data.iniziata : '';
+                    document.getElementById('status-completata').textContent = data.completata ? 'Completata il: ' + data.completata : '';
+                    document.getElementById('status-tempo').textContent = data.tempoImpiegato ? 'Tempo impiegato: ' + data.tempoImpiegato : '';
                     document.getElementById('status-updated').textContent = 'Ultimo aggiornamento: ' + data.aggiornato;
                     statusResult.classList.add('show');
                 } else {

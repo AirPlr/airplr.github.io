@@ -12,8 +12,17 @@ gestisce tutto a mano, come sempre.
 - I dati vivono in un Google Sheet. Ogni riga è una richiesta con un codice
   univoco (es. `PRQ-4F7K92`). Solo chi ha il codice può vedere lo stato di
   *quella* richiesta — nessuno vede le richieste altrui.
-- Lo stato (colonna `Stato`) si aggiorna a mano da te, direttamente nel foglio
-  (es. `Ricevuta` → `In corso` → `Completata`).
+- Lo stato si aggiorna a mano da te, nella colonna `Stato`: è un menu a tendina
+  con tre valori — `Ricevuta` → `Iniziata` → `Completata`. Quando selezioni
+  `Iniziata` lo script registra da solo la data/ora in `Iniziata il`; quando
+  selezioni `Completata` registra `Completata il` e calcola `Tempo impiegato`
+  (differenza tra le due date, es. `2g 3h 15m`). Non serve scrivere nulla a
+  mano in quelle colonne.
+- Chi invia la richiesta può allegare fino a 5 immagini (max 5MB l'una). Vengono
+  caricate su Google Drive, nella cartella `Richieste Prenota - Allegati`, in
+  una sottocartella con il nome del codice richiesta (es. `PRQ-4F7K92`). Il
+  link alla cartella arriva nella tua email di notifica ed è salvato anche
+  nella colonna `Allegati` del foglio.
 
 ## Setup (una tantum)
 
@@ -27,11 +36,15 @@ gestisce tutto a mano, come sempre.
    - Salva (icona dischetto o `Ctrl+S`).
 
 3. **Inizializza il foglio**
+   - ⚠️ Solo per un foglio nuovo/vuoto: `setup()` cancella tutte le righe
+     esistenti. Se hai già richieste salvate, salta questo passaggio e segui
+     invece [Migrare un foglio già in uso](#migrare-un-foglio-già-in-uso).
    - Nella toolbar dell'editor Apps Script, scegli la funzione `setup` dal
      menu a tendina e premi ▶️ Esegui.
    - La prima volta ti chiederà l'autorizzazione: accetta (è il tuo script,
      sul tuo account).
-   - Torna sul foglio: dovresti vedere una scheda "Richieste" con le intestazioni.
+   - Torna sul foglio: dovresti vedere una scheda "Richieste" con le intestazioni
+     e il menu a tendina già impostato sulla colonna `Stato`.
 
 4. **Distribuisci come Web App**
    - Nell'editor Apps Script: `Distribuisci` → `Nuova implementazione`.
@@ -53,10 +66,32 @@ gestisce tutto a mano, come sempre.
 
 ## Aggiornare una richiesta
 
-Apri il Google Sheet, trova la riga con il codice giusto, modifica la colonna
-`Stato` (testo libero, es. `Ricevuta`, `In corso`, `In attesa di risposta`,
-`Completata`). La persona che ha il codice lo vedrà al prossimo controllo
-sulla pagina.
+Apri il Google Sheet, trova la riga con il codice giusto e scegli il nuovo
+valore dal menu a tendina della colonna `Stato` (`Ricevuta` → `Iniziata` →
+`Completata`). Le colonne `Iniziata il`, `Completata il` e `Tempo impiegato`
+si aggiornano da sole. La persona che ha il codice vedrà il nuovo stato (e i
+tempi) al prossimo controllo sulla pagina.
+
+## Migrare un foglio già in uso
+
+Se hai già un foglio "Richieste" con dati veri, **non eseguire `setup()`**
+(cancellerebbe tutto). Aggiorna invece la struttura a mano, una volta sola:
+
+1. Incolla il nuovo `Code.gs` nell'editor Apps Script (sovrascrivi il vecchio) e salva.
+2. Nel foglio, individua la colonna `Aggiornato` (l'ultima, prima di questa
+   modifica). Click destro sulla lettera di colonna → **Inserisci 3 colonne
+   a sinistra**.
+3. Intitola le 3 nuove colonne, nell'ordine: `Iniziata il`, `Completata il`,
+   `Tempo impiegato`. (La colonna `Aggiornato` si sposta automaticamente a
+   destra con i suoi dati intatti.)
+4. Aggiungi una colonna dopo `Aggiornato` con intestazione `Allegati`.
+5. Seleziona la colonna `Stato` (dalla riga 2 in giù) → `Dati` → `Validazione
+   dati` → `Aggiungi regola` → tipo "Elenco di elementi": `Ricevuta, Iniziata,
+   Completata` → **Rifiuta l'inserimento** → Fatto.
+6. Ridistribuisci lo script come nuova versione (vedi sotto).
+
+Le richieste esistenti restano intatte; le nuove colonne si popolano da quel
+momento in poi, quando cambi lo `Stato`.
 
 ## Ridistribuire dopo una modifica allo script
 
@@ -64,6 +99,10 @@ Se modifichi `Code.gs` in futuro, devi ripubblicare: `Distribuisci` →
 `Gestisci implementazioni` → icona matita sulla implementazione esistente →
 `Nuova versione` → `Distribuisci`. L'URL resta lo stesso, non serve
 aggiornare `index.html`.
+
+La prima volta che pubblichi la versione con gli allegati, Google potrebbe
+chiederti di autorizzare di nuovo lo script (per l'accesso a Google Drive):
+accetta, è sempre il tuo account.
 
 ## Note
 
