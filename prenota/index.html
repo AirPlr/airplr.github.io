@@ -38,6 +38,7 @@
         }
 
         body {
+            background: transparent;
             color: #fff;
         }
 
@@ -69,6 +70,14 @@
             animation: gradient-flow 20s ease infinite;
         }
 
+        .galaxy-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.25);
+            pointer-events: none;
+        }
+
         .orb {
             position: absolute;
             border-radius: 50%;
@@ -96,6 +105,16 @@
             animation: drift-2 50s ease-in-out infinite alternate-reverse;
         }
 
+        .orb-3 {
+            width: 60vw;
+            height: 60vw;
+            top: 30%;
+            right: 20%;
+            background: radial-gradient(circle, var(--accent-deep), transparent 70%);
+            opacity: 0.3;
+            animation: drift-3 60s ease-in-out infinite alternate;
+        }
+
         @keyframes drift-1 {
             from {
                 transform: translate(0, 0) rotate(0deg);
@@ -116,6 +135,16 @@
             }
         }
 
+        @keyframes drift-3 {
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+
+            to {
+                transform: translate(-5%, 10%) scale(1.2);
+            }
+        }
+
         .stars {
             position: absolute;
             top: 0;
@@ -133,6 +162,13 @@
             background-repeat: repeat;
             opacity: 0.6;
             animation: star-move 100s linear infinite;
+        }
+
+        .stars-2 {
+            background-size: 300px 300px;
+            background-position: 50px 50px;
+            opacity: 0.4;
+            animation: star-move 150s linear infinite reverse;
         }
 
         @keyframes star-move {
@@ -509,6 +545,12 @@
         }
 
         @media(max-width: 640px) {
+            .orb {
+                width: 120vw;
+                height: 120vw;
+                opacity: 0.3;
+            }
+
             .service-grid {
                 grid-template-columns: 1fr;
             }
@@ -528,8 +570,10 @@
 
     <div class="galaxy-container">
         <div class="stars"></div>
+        <div class="stars stars-2"></div>
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
     </div>
 
     <main>
