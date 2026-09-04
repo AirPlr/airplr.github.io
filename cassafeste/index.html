@@ -3,77 +3,125 @@
 <head>
     <!-- Document metadata -->
     <meta charset="UTF-8">
-    <title>Menu Cibo e Bevande</title>
-    
+    <title>54ª Sagra della Patata - Cassa</title>
+
     <!-- External stylesheets -->
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AirPlr/airplr.github.io/cassafeste/styles.css" type="text/css">
 </head>
 <body>
     <div class="container">
         <!-- Page title -->
-        <h1>Menu Cibo e Bevande</h1>
-        
+        <h1>54ª Sagra della Patata</h1>
+
         <!-- Checkout section -->
         <h2>Checkout</h2>
-        
+
         <!-- Form -->
         <form>
-            <!-- Panino input -->
+            <h3>Da Mangiare</h3>
+
+            <!-- Gnocchi input -->
             <div class="form-group">
-                <label for="panino">Panino:</label>
-                <input type="number" id="panino" name="panino" min="0" value="0" onchange="calculateTotalPrice()">
-                <input type="button" value="-" onclick="decrementValue('panino')">
-                <input type="button" value="+" onclick="incrementValue('panino')">
+                <label for="gnocchi">Gnocchi (6€):</label>
+                <input type="number" id="gnocchi" name="gnocchi" min="0" value="0" onchange="calculateTotalPrice()">
+                <input type="button" value="-" onclick="decrementValue('gnocchi')">
+                <input type="button" value="+" onclick="incrementValue('gnocchi')">
             </div>
 
-            <!-- Arrosticini input -->
+            <!-- Panino con salsiccia input -->
             <div class="form-group">
-                <label for="arrosticini">Arrosticini:</label>
-                <input type="number" id="arrosticini" name="arrosticini" min="0" value="0" onchange="calculateTotalPrice()">
-                <input type="button" value="-" onclick="decrementValue('arrosticini')">
-                <input type="button" value="+" onclick="incrementValue('arrosticini')">
-                
-                <!-- Arrosticini buttons -->
-                <button type="button" onclick="addArrosticini5()">Aggiungi 5</button>
-                <button type="button" onclick="addArrosticini10()">Aggiungi 10</button>
+                <label for="paninoSalsiccia">Panino con salsiccia (4€):</label>
+                <input type="number" id="paninoSalsiccia" name="paninoSalsiccia" min="0" value="0" onchange="calculateTotalPrice()">
+                <input type="button" value="-" onclick="decrementValue('paninoSalsiccia')">
+                <input type="button" value="+" onclick="incrementValue('paninoSalsiccia')">
             </div>
 
-            <!-- Lattina input -->
+            <!-- Arrosticini input: sold in units of 5 (6€ per 5pz) -->
             <div class="form-group">
-                <label for="lattina">Lattina:</label>
-                <input type="number" id="lattina" name="lattina" min="0" value="0" onchange="calculateTotalPrice()">
-                <input type="button" value="-" onclick="decrementValue('lattina')">
-                <input type="button" value="+" onclick="incrementValue('lattina')">
+                <label for="arrosticini">Arrosticini 5pz (6€):</label>
+                <input type="number" id="arrosticini" name="arrosticini" min="0" step="5" value="0" onchange="calculateTotalPrice()">
+                <input type="button" value="-5" onclick="decrementValue('arrosticini', 5)">
+                <input type="button" value="+5" onclick="incrementValue('arrosticini', 5)">
+            </div>
+
+            <!-- Patatine fritte input -->
+            <div class="form-group">
+                <label for="patatineFritte">Patatine fritte (3€):</label>
+                <input type="number" id="patatineFritte" name="patatineFritte" min="0" value="0" onchange="calculateTotalPrice()">
+                <input type="button" value="-" onclick="decrementValue('patatineFritte')">
+                <input type="button" value="+" onclick="incrementValue('patatineFritte')">
+            </div>
+
+            <!-- Ciambella input -->
+            <div class="form-group">
+                <label for="ciambella">Ciambella (3€):</label>
+                <input type="number" id="ciambella" name="ciambella" min="0" value="0" onchange="calculateTotalPrice()">
+                <input type="button" value="-" onclick="decrementValue('ciambella')">
+                <input type="button" value="+" onclick="incrementValue('ciambella')">
+            </div>
+
+            <!-- Frittella input -->
+            <div class="form-group">
+                <label for="frittella">Frittella dolce o salata (2€):</label>
+                <input type="number" id="frittella" name="frittella" min="0" value="0" onchange="calculateTotalPrice()">
+                <input type="button" value="-" onclick="decrementValue('frittella')">
+                <input type="button" value="+" onclick="incrementValue('frittella')">
+            </div>
+
+            <!-- Pizza con patate input -->
+            <div class="form-group">
+                <label for="pizzaPatate">Pizza con patate (2€):</label>
+                <input type="number" id="pizzaPatate" name="pizzaPatate" min="0" value="0" onchange="calculateTotalPrice()">
+                <input type="button" value="-" onclick="decrementValue('pizzaPatate')">
+                <input type="button" value="+" onclick="incrementValue('pizzaPatate')">
+            </div>
+
+            <h3>Da Bere</h3>
+
+            <!-- Birra alla spina input -->
+            <div class="form-group">
+                <label for="birraSpina">Birra alla spina 0,3 (4€):</label>
+                <input type="number" id="birraSpina" name="birraSpina" min="0" value="0" onchange="calculateTotalPrice()">
+                <input type="button" value="-" onclick="decrementValue('birraSpina')">
+                <input type="button" value="+" onclick="incrementValue('birraSpina')">
+            </div>
+
+            <!-- Bicchiere di vino input -->
+            <div class="form-group">
+                <label for="bicchiereVino">Bicchiere di vino bianco o rosso (2€):</label>
+                <input type="number" id="bicchiereVino" name="bicchiereVino" min="0" value="0" onchange="calculateTotalPrice()">
+                <input type="button" value="-" onclick="decrementValue('bicchiereVino')">
+                <input type="button" value="+" onclick="incrementValue('bicchiereVino')">
+            </div>
+
+            <!-- Brocca di vino 1L input -->
+            <div class="form-group">
+                <label for="broccaVino">Brocca di vino 1L bianco o rosso (10€):</label>
+                <input type="number" id="broccaVino" name="broccaVino" min="0" value="0" onchange="calculateTotalPrice()">
+                <input type="button" value="-" onclick="decrementValue('broccaVino')">
+                <input type="button" value="+" onclick="incrementValue('broccaVino')">
             </div>
 
             <!-- Acqua input -->
             <div class="form-group">
-                <label for="acqua">Acqua:</label>
+                <label for="acqua">Acqua (1€):</label>
                 <input type="number" id="acqua" name="acqua" min="0" value="0" onchange="calculateTotalPrice()">
                 <input type="button" value="-" onclick="decrementValue('acqua')">
                 <input type="button" value="+" onclick="incrementValue('acqua')">
             </div>
 
-            <!-- Birra input -->
+            <!-- Bibite lattine input -->
             <div class="form-group">
-                <label for="birra">Birra:</label>
-                <input type="number" id="birra" name="birra" min="0" value="0" onchange="calculateTotalPrice()">
-                <input type="button" value="-" onclick="decrementValue('birra')">
-                <input type="button" value="+" onclick="incrementValue('birra')">
-            </div>
-
-            <!-- Vino input -->
-            <div class="form-group">
-                <label for="vino">Vino:</label>
-                <input type="number" id="vino" name="vino" min="0" value="0" onchange="calculateTotalPrice()">
-                <input type="button" value="-" onclick="decrementValue('vino')">
-                <input type="button" value="+" onclick="incrementValue('vino')">
+                <label for="bibiteLattine">Bibite lattine (3€):</label>
+                <input type="number" id="bibiteLattine" name="bibiteLattine" min="0" value="0" onchange="calculateTotalPrice()">
+                <input type="button" value="-" onclick="decrementValue('bibiteLattine')">
+                <input type="button" value="+" onclick="incrementValue('bibiteLattine')">
             </div>
 
             <!-- Total price display -->
             <h2 class="total-price">Total Price: €0.00</h2>
         </form>
-        
+
         <!-- Reset button -->
         <button type="button" onclick="resetForm()">Reset</button>
     </div>
@@ -103,70 +151,64 @@
 
         // Function to reset form
         function resetForm() {
-            document.getElementById("panino").value = 0;
+            document.getElementById("gnocchi").value = 0;
+            document.getElementById("paninoSalsiccia").value = 0;
             document.getElementById("arrosticini").value = 0;
-            document.getElementById("lattina").value = 0;
+            document.getElementById("patatineFritte").value = 0;
+            document.getElementById("ciambella").value = 0;
+            document.getElementById("frittella").value = 0;
+            document.getElementById("pizzaPatate").value = 0;
+            document.getElementById("birraSpina").value = 0;
+            document.getElementById("bicchiereVino").value = 0;
+            document.getElementById("broccaVino").value = 0;
             document.getElementById("acqua").value = 0;
-            document.getElementById("birra").value = 0;
-            document.getElementById("vino").value = 0;
+            document.getElementById("bibiteLattine").value = 0;
             calculateTotalPrice();
         }
 
-        // Function to add 5 to arrosticini quantity
-        function addArrosticini5() {
-            var arrosticiniQuantity = parseInt(document.getElementById("arrosticini").value);
-            arrosticiniQuantity += 5;
-            document.getElementById("arrosticini").value = arrosticiniQuantity;
-            calculateTotalPrice();
-        }
-        
-        // Function to add 10 to arrosticini quantity
-        function addArrosticini10() {
-            var arrosticiniQuantity = parseInt(document.getElementById("arrosticini").value);
-            arrosticiniQuantity += 10;
-            document.getElementById("arrosticini").value = arrosticiniQuantity;
-            calculateTotalPrice();
-        }
-        
         // Function to calculate total price
         function calculateTotalPrice() {
             // Prices per item
-            var paninoPrice = 2.50;
-            var arrosticiniPrice = 1.00;
-            var lattinaPrice = 1.50; // replace with actual price
-            var acquaPrice = 1.00; // replace with actual price
-            var birraPrice = 2.50; // replace with actual price
-            var vinoPrice = 3.00; // replace with actual price
-
-            // Quantity per item
-            var paninoQuantity = document.getElementById('panino').value;
-            var arrosticiniQuantity = document.getElementById('arrosticini').value;
-            var lattinaQuantity = document.getElementById('lattina').value;
-            var acquaQuantity = document.getElementById('acqua').value;
-            var birraQuantity = document.getElementById('birra').value;
-            var vinoQuantity = document.getElementById('vino').value;
+            var prices = {
+                gnocchi: 6.00,
+                paninoSalsiccia: 4.00,
+                arrosticini: 6.00 / 5, // sold in units of 5 for 6€
+                patatineFritte: 3.00,
+                ciambella: 3.00,
+                frittella: 2.00,
+                pizzaPatate: 2.00,
+                birraSpina: 4.00,
+                bicchiereVino: 2.00,
+                broccaVino: 10.00,
+                acqua: 1.00,
+                bibiteLattine: 3.00
+            };
 
             // Calculate total price
-            var totalPrice = (paninoPrice * paninoQuantity) + (arrosticiniPrice * arrosticiniQuantity) + (lattinaPrice * lattinaQuantity) + (acquaPrice * acquaQuantity) + (birraPrice * birraQuantity) + (vinoPrice * vinoQuantity);
+            var totalPrice = 0;
+            for (var itemId in prices) {
+                var quantity = parseInt(document.getElementById(itemId).value) || 0;
+                totalPrice += prices[itemId] * quantity;
+            }
 
             // Update total price display
             document.querySelector('.total-price').textContent = 'Total Price: €' + totalPrice.toFixed(2);
         }
-        
+
         // Function to increment value
-        function incrementValue(inputId) {
+        function incrementValue(inputId, step) {
+            step = step || 1;
             var input = document.getElementById(inputId);
-            input.value = parseInt(input.value) + 1;
+            input.value = parseInt(input.value) + step;
             calculateTotalPrice();
         }
-        
+
         // Function to decrement value
-        function decrementValue(inputId) {
+        function decrementValue(inputId, step) {
+            step = step || 1;
             var input = document.getElementById(inputId);
-            if (parseInt(input.value) > 0) {
-                input.value = parseInt(input.value) - 1;
-                calculateTotalPrice();
-            }
+            input.value = Math.max(0, parseInt(input.value) - step);
+            calculateTotalPrice();
         }
     </script>
 </body>
