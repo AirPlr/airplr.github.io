@@ -23,124 +23,124 @@
 
             <!-- Gnocchi input -->
             <div class="form-group">
-                <label for="gnocchi">Gnocchi <span class="price">6€</span></label>
-                <div class="stepper">
-                    <input type="button" value="-" onclick="decrementValue('gnocchi')">
+                <input type="button" class="edge-btn" value="-" onclick="decrementValue('gnocchi')">
+                <div class="item-info">
+                    <label for="gnocchi">Gnocchi <span class="price">6€</span></label>
                     <input type="number" id="gnocchi" name="gnocchi" min="0" value="0" onchange="calculateTotalPrice()">
-                    <input type="button" value="+" onclick="incrementValue('gnocchi')">
                 </div>
+                <input type="button" class="edge-btn" value="+" onclick="incrementValue('gnocchi')">
             </div>
 
             <!-- Panino con salsiccia input -->
             <div class="form-group">
-                <label for="paninoSalsiccia">Panino con salsiccia <span class="price">4€</span></label>
-                <div class="stepper">
-                    <input type="button" value="-" onclick="decrementValue('paninoSalsiccia')">
+                <input type="button" class="edge-btn" value="-" onclick="decrementValue('paninoSalsiccia')">
+                <div class="item-info">
+                    <label for="paninoSalsiccia">Panino con salsiccia <span class="price">4€</span></label>
                     <input type="number" id="paninoSalsiccia" name="paninoSalsiccia" min="0" value="0" onchange="calculateTotalPrice()">
-                    <input type="button" value="+" onclick="incrementValue('paninoSalsiccia')">
                 </div>
+                <input type="button" class="edge-btn" value="+" onclick="incrementValue('paninoSalsiccia')">
             </div>
 
             <!-- Arrosticini input: sold in units of 5 (6€ per 5pz) -->
             <div class="form-group">
-                <label for="arrosticini">Arrosticini 5pz <span class="price">6€</span></label>
-                <div class="stepper">
-                    <input type="button" value="-5" onclick="decrementValue('arrosticini', 5)">
+                <input type="button" class="edge-btn" value="-5" onclick="decrementValue('arrosticini', 5)">
+                <div class="item-info">
+                    <label for="arrosticini">Arrosticini 5pz <span class="price">6€</span></label>
                     <input type="number" id="arrosticini" name="arrosticini" min="0" step="5" value="0" onchange="calculateTotalPrice()">
-                    <input type="button" value="+5" onclick="incrementValue('arrosticini', 5)">
                 </div>
+                <input type="button" class="edge-btn" value="+5" onclick="incrementValue('arrosticini', 5)">
             </div>
 
             <!-- Patatine fritte input -->
             <div class="form-group">
-                <label for="patatineFritte">Patatine fritte <span class="price">3€</span></label>
-                <div class="stepper">
-                    <input type="button" value="-" onclick="decrementValue('patatineFritte')">
+                <input type="button" class="edge-btn" value="-" onclick="decrementValue('patatineFritte')">
+                <div class="item-info">
+                    <label for="patatineFritte">Patatine fritte <span class="price">3€</span></label>
                     <input type="number" id="patatineFritte" name="patatineFritte" min="0" value="0" onchange="calculateTotalPrice()">
-                    <input type="button" value="+" onclick="incrementValue('patatineFritte')">
                 </div>
+                <input type="button" class="edge-btn" value="+" onclick="incrementValue('patatineFritte')">
             </div>
 
             <!-- Ciambella input -->
             <div class="form-group">
-                <label for="ciambella">Ciambella <span class="price">3€</span></label>
-                <div class="stepper">
-                    <input type="button" value="-" onclick="decrementValue('ciambella')">
+                <input type="button" class="edge-btn" value="-" onclick="decrementValue('ciambella')">
+                <div class="item-info">
+                    <label for="ciambella">Ciambella <span class="price">3€</span></label>
                     <input type="number" id="ciambella" name="ciambella" min="0" value="0" onchange="calculateTotalPrice()">
-                    <input type="button" value="+" onclick="incrementValue('ciambella')">
                 </div>
+                <input type="button" class="edge-btn" value="+" onclick="incrementValue('ciambella')">
             </div>
 
             <!-- Frittella input -->
             <div class="form-group">
-                <label for="frittella">Frittella dolce o salata <span class="price">2€</span></label>
-                <div class="stepper">
-                    <input type="button" value="-" onclick="decrementValue('frittella')">
+                <input type="button" class="edge-btn" value="-" onclick="decrementValue('frittella')">
+                <div class="item-info">
+                    <label for="frittella">Frittella dolce o salata <span class="price">2€</span></label>
                     <input type="number" id="frittella" name="frittella" min="0" value="0" onchange="calculateTotalPrice()">
-                    <input type="button" value="+" onclick="incrementValue('frittella')">
                 </div>
+                <input type="button" class="edge-btn" value="+" onclick="incrementValue('frittella')">
             </div>
 
             <!-- Pizza con patate input -->
             <div class="form-group">
-                <label for="pizzaPatate">Pizza con patate <span class="price">2€</span></label>
-                <div class="stepper">
-                    <input type="button" value="-" onclick="decrementValue('pizzaPatate')">
+                <input type="button" class="edge-btn" value="-" onclick="decrementValue('pizzaPatate')">
+                <div class="item-info">
+                    <label for="pizzaPatate">Pizza con patate <span class="price">2€</span></label>
                     <input type="number" id="pizzaPatate" name="pizzaPatate" min="0" value="0" onchange="calculateTotalPrice()">
-                    <input type="button" value="+" onclick="incrementValue('pizzaPatate')">
                 </div>
+                <input type="button" class="edge-btn" value="+" onclick="incrementValue('pizzaPatate')">
             </div>
 
             <h3>Da Bere</h3>
 
             <!-- Birra alla spina input -->
             <div class="form-group">
-                <label for="birraSpina">Birra alla spina 0,3 <span class="price">4€</span></label>
-                <div class="stepper">
-                    <input type="button" value="-" onclick="decrementValue('birraSpina')">
+                <input type="button" class="edge-btn" value="-" onclick="decrementValue('birraSpina')">
+                <div class="item-info">
+                    <label for="birraSpina">Birra alla spina 0,3 <span class="price">4€</span></label>
                     <input type="number" id="birraSpina" name="birraSpina" min="0" value="0" onchange="calculateTotalPrice()">
-                    <input type="button" value="+" onclick="incrementValue('birraSpina')">
                 </div>
+                <input type="button" class="edge-btn" value="+" onclick="incrementValue('birraSpina')">
             </div>
 
             <!-- Bicchiere di vino input -->
             <div class="form-group">
-                <label for="bicchiereVino">Bicchiere di vino <span class="price">2€</span></label>
-                <div class="stepper">
-                    <input type="button" value="-" onclick="decrementValue('bicchiereVino')">
+                <input type="button" class="edge-btn" value="-" onclick="decrementValue('bicchiereVino')">
+                <div class="item-info">
+                    <label for="bicchiereVino">Bicchiere di vino <span class="price">2€</span></label>
                     <input type="number" id="bicchiereVino" name="bicchiereVino" min="0" value="0" onchange="calculateTotalPrice()">
-                    <input type="button" value="+" onclick="incrementValue('bicchiereVino')">
                 </div>
+                <input type="button" class="edge-btn" value="+" onclick="incrementValue('bicchiereVino')">
             </div>
 
             <!-- Brocca di vino 1L input -->
             <div class="form-group">
-                <label for="broccaVino">Brocca di vino 1L <span class="price">10€</span></label>
-                <div class="stepper">
-                    <input type="button" value="-" onclick="decrementValue('broccaVino')">
+                <input type="button" class="edge-btn" value="-" onclick="decrementValue('broccaVino')">
+                <div class="item-info">
+                    <label for="broccaVino">Brocca di vino 1L <span class="price">10€</span></label>
                     <input type="number" id="broccaVino" name="broccaVino" min="0" value="0" onchange="calculateTotalPrice()">
-                    <input type="button" value="+" onclick="incrementValue('broccaVino')">
                 </div>
+                <input type="button" class="edge-btn" value="+" onclick="incrementValue('broccaVino')">
             </div>
 
             <!-- Acqua input -->
             <div class="form-group">
-                <label for="acqua">Acqua <span class="price">1€</span></label>
-                <div class="stepper">
-                    <input type="button" value="-" onclick="decrementValue('acqua')">
+                <input type="button" class="edge-btn" value="-" onclick="decrementValue('acqua')">
+                <div class="item-info">
+                    <label for="acqua">Acqua <span class="price">1€</span></label>
                     <input type="number" id="acqua" name="acqua" min="0" value="0" onchange="calculateTotalPrice()">
-                    <input type="button" value="+" onclick="incrementValue('acqua')">
                 </div>
+                <input type="button" class="edge-btn" value="+" onclick="incrementValue('acqua')">
             </div>
 
             <!-- Bibite lattine input -->
             <div class="form-group">
-                <label for="bibiteLattine">Bibite lattine <span class="price">3€</span></label>
-                <div class="stepper">
-                    <input type="button" value="-" onclick="decrementValue('bibiteLattine')">
+                <input type="button" class="edge-btn" value="-" onclick="decrementValue('bibiteLattine')">
+                <div class="item-info">
+                    <label for="bibiteLattine">Bibite lattine <span class="price">3€</span></label>
                     <input type="number" id="bibiteLattine" name="bibiteLattine" min="0" value="0" onchange="calculateTotalPrice()">
-                    <input type="button" value="+" onclick="incrementValue('bibiteLattine')">
                 </div>
+                <input type="button" class="edge-btn" value="+" onclick="incrementValue('bibiteLattine')">
             </div>
         </form>
     </div>

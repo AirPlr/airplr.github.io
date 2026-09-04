@@ -57,8 +57,17 @@ form {
     border-bottom: 1px solid #e5e5e5;
 }
 
-.form-group label {
+/* Name + quantity, centered between the edge buttons */
+.item-info {
     flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-width: 0;
+}
+
+.item-info label {
     font-size: 0.95rem;
     line-height: 1.3;
     min-width: 0;
@@ -69,17 +78,10 @@ form {
     white-space: nowrap;
 }
 
-/* Stepper (- / quantity / +) group */
-.stepper {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-shrink: 0;
-}
-
-/* Style the input fields */
-.stepper input[type="number"] {
+/* Quantity input, next to the label */
+.item-info input[type="number"] {
     width: 3rem;
+    flex-shrink: 0;
     padding: 8px 2px;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -88,8 +90,8 @@ form {
     -moz-appearance: textfield;
 }
 
-.stepper input[type="number"]::-webkit-outer-spin-button,
-.stepper input[type="number"]::-webkit-inner-spin-button {
+.item-info input[type="number"]::-webkit-outer-spin-button,
+.item-info input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
@@ -113,6 +115,16 @@ input[type="button"] {
 button:active,
 input[type="button"]:active {
     background-color: #3d8b40;
+}
+
+/* Edge buttons: "-" pinned to the left edge, "+" to the right edge of the row */
+.edge-btn {
+    flex-shrink: 0;
+    min-width: 48px;
+    min-height: 48px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: 8px;
 }
 
 /* Sticky total bar pinned to the bottom of the viewport */
@@ -148,13 +160,13 @@ input[type="button"]:active {
     background-color: #c62828;
 }
 
-/* Slightly larger touch targets and single-column layout on narrow phones */
-@media (max-width: 360px) {
-    .form-group {
+/* Stack name above quantity on very narrow phones */
+@media (max-width: 340px) {
+    .item-info {
         flex-wrap: wrap;
     }
 
-    .form-group label {
+    .item-info label {
         flex-basis: 100%;
     }
 }
