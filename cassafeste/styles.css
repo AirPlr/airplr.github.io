@@ -118,7 +118,7 @@ input[type="button"]:active {
 }
 
 /* Edge buttons: "-" pinned to the left edge, "+" to the right edge of the row */
-.edge-btn {
+input.edge-btn {
     flex-shrink: 0;
     min-width: 48px;
     min-height: 48px;
