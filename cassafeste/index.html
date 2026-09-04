@@ -3,6 +3,7 @@
 <head>
     <!-- Document metadata -->
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>54ª Sagra della Patata - Cassa</title>
 
     <!-- External stylesheets -->
@@ -22,133 +23,136 @@
 
             <!-- Gnocchi input -->
             <div class="form-group">
-                <label for="gnocchi">Gnocchi (6€):</label>
-                <input type="number" id="gnocchi" name="gnocchi" min="0" value="0" onchange="calculateTotalPrice()">
-                <input type="button" value="-" onclick="decrementValue('gnocchi')">
-                <input type="button" value="+" onclick="incrementValue('gnocchi')">
+                <label for="gnocchi">Gnocchi <span class="price">6€</span></label>
+                <div class="stepper">
+                    <input type="button" value="-" onclick="decrementValue('gnocchi')">
+                    <input type="number" id="gnocchi" name="gnocchi" min="0" value="0" onchange="calculateTotalPrice()">
+                    <input type="button" value="+" onclick="incrementValue('gnocchi')">
+                </div>
             </div>
 
             <!-- Panino con salsiccia input -->
             <div class="form-group">
-                <label for="paninoSalsiccia">Panino con salsiccia (4€):</label>
-                <input type="number" id="paninoSalsiccia" name="paninoSalsiccia" min="0" value="0" onchange="calculateTotalPrice()">
-                <input type="button" value="-" onclick="decrementValue('paninoSalsiccia')">
-                <input type="button" value="+" onclick="incrementValue('paninoSalsiccia')">
+                <label for="paninoSalsiccia">Panino con salsiccia <span class="price">4€</span></label>
+                <div class="stepper">
+                    <input type="button" value="-" onclick="decrementValue('paninoSalsiccia')">
+                    <input type="number" id="paninoSalsiccia" name="paninoSalsiccia" min="0" value="0" onchange="calculateTotalPrice()">
+                    <input type="button" value="+" onclick="incrementValue('paninoSalsiccia')">
+                </div>
             </div>
 
             <!-- Arrosticini input: sold in units of 5 (6€ per 5pz) -->
             <div class="form-group">
-                <label for="arrosticini">Arrosticini 5pz (6€):</label>
-                <input type="number" id="arrosticini" name="arrosticini" min="0" step="5" value="0" onchange="calculateTotalPrice()">
-                <input type="button" value="-5" onclick="decrementValue('arrosticini', 5)">
-                <input type="button" value="+5" onclick="incrementValue('arrosticini', 5)">
+                <label for="arrosticini">Arrosticini 5pz <span class="price">6€</span></label>
+                <div class="stepper">
+                    <input type="button" value="-5" onclick="decrementValue('arrosticini', 5)">
+                    <input type="number" id="arrosticini" name="arrosticini" min="0" step="5" value="0" onchange="calculateTotalPrice()">
+                    <input type="button" value="+5" onclick="incrementValue('arrosticini', 5)">
+                </div>
             </div>
 
             <!-- Patatine fritte input -->
             <div class="form-group">
-                <label for="patatineFritte">Patatine fritte (3€):</label>
-                <input type="number" id="patatineFritte" name="patatineFritte" min="0" value="0" onchange="calculateTotalPrice()">
-                <input type="button" value="-" onclick="decrementValue('patatineFritte')">
-                <input type="button" value="+" onclick="incrementValue('patatineFritte')">
+                <label for="patatineFritte">Patatine fritte <span class="price">3€</span></label>
+                <div class="stepper">
+                    <input type="button" value="-" onclick="decrementValue('patatineFritte')">
+                    <input type="number" id="patatineFritte" name="patatineFritte" min="0" value="0" onchange="calculateTotalPrice()">
+                    <input type="button" value="+" onclick="incrementValue('patatineFritte')">
+                </div>
             </div>
 
             <!-- Ciambella input -->
             <div class="form-group">
-                <label for="ciambella">Ciambella (3€):</label>
-                <input type="number" id="ciambella" name="ciambella" min="0" value="0" onchange="calculateTotalPrice()">
-                <input type="button" value="-" onclick="decrementValue('ciambella')">
-                <input type="button" value="+" onclick="incrementValue('ciambella')">
+                <label for="ciambella">Ciambella <span class="price">3€</span></label>
+                <div class="stepper">
+                    <input type="button" value="-" onclick="decrementValue('ciambella')">
+                    <input type="number" id="ciambella" name="ciambella" min="0" value="0" onchange="calculateTotalPrice()">
+                    <input type="button" value="+" onclick="incrementValue('ciambella')">
+                </div>
             </div>
 
             <!-- Frittella input -->
             <div class="form-group">
-                <label for="frittella">Frittella dolce o salata (2€):</label>
-                <input type="number" id="frittella" name="frittella" min="0" value="0" onchange="calculateTotalPrice()">
-                <input type="button" value="-" onclick="decrementValue('frittella')">
-                <input type="button" value="+" onclick="incrementValue('frittella')">
+                <label for="frittella">Frittella dolce o salata <span class="price">2€</span></label>
+                <div class="stepper">
+                    <input type="button" value="-" onclick="decrementValue('frittella')">
+                    <input type="number" id="frittella" name="frittella" min="0" value="0" onchange="calculateTotalPrice()">
+                    <input type="button" value="+" onclick="incrementValue('frittella')">
+                </div>
             </div>
 
             <!-- Pizza con patate input -->
             <div class="form-group">
-                <label for="pizzaPatate">Pizza con patate (2€):</label>
-                <input type="number" id="pizzaPatate" name="pizzaPatate" min="0" value="0" onchange="calculateTotalPrice()">
-                <input type="button" value="-" onclick="decrementValue('pizzaPatate')">
-                <input type="button" value="+" onclick="incrementValue('pizzaPatate')">
+                <label for="pizzaPatate">Pizza con patate <span class="price">2€</span></label>
+                <div class="stepper">
+                    <input type="button" value="-" onclick="decrementValue('pizzaPatate')">
+                    <input type="number" id="pizzaPatate" name="pizzaPatate" min="0" value="0" onchange="calculateTotalPrice()">
+                    <input type="button" value="+" onclick="incrementValue('pizzaPatate')">
+                </div>
             </div>
 
             <h3>Da Bere</h3>
 
             <!-- Birra alla spina input -->
             <div class="form-group">
-                <label for="birraSpina">Birra alla spina 0,3 (4€):</label>
-                <input type="number" id="birraSpina" name="birraSpina" min="0" value="0" onchange="calculateTotalPrice()">
-                <input type="button" value="-" onclick="decrementValue('birraSpina')">
-                <input type="button" value="+" onclick="incrementValue('birraSpina')">
+                <label for="birraSpina">Birra alla spina 0,3 <span class="price">4€</span></label>
+                <div class="stepper">
+                    <input type="button" value="-" onclick="decrementValue('birraSpina')">
+                    <input type="number" id="birraSpina" name="birraSpina" min="0" value="0" onchange="calculateTotalPrice()">
+                    <input type="button" value="+" onclick="incrementValue('birraSpina')">
+                </div>
             </div>
 
             <!-- Bicchiere di vino input -->
             <div class="form-group">
-                <label for="bicchiereVino">Bicchiere di vino bianco o rosso (2€):</label>
-                <input type="number" id="bicchiereVino" name="bicchiereVino" min="0" value="0" onchange="calculateTotalPrice()">
-                <input type="button" value="-" onclick="decrementValue('bicchiereVino')">
-                <input type="button" value="+" onclick="incrementValue('bicchiereVino')">
+                <label for="bicchiereVino">Bicchiere di vino <span class="price">2€</span></label>
+                <div class="stepper">
+                    <input type="button" value="-" onclick="decrementValue('bicchiereVino')">
+                    <input type="number" id="bicchiereVino" name="bicchiereVino" min="0" value="0" onchange="calculateTotalPrice()">
+                    <input type="button" value="+" onclick="incrementValue('bicchiereVino')">
+                </div>
             </div>
 
             <!-- Brocca di vino 1L input -->
             <div class="form-group">
-                <label for="broccaVino">Brocca di vino 1L bianco o rosso (10€):</label>
-                <input type="number" id="broccaVino" name="broccaVino" min="0" value="0" onchange="calculateTotalPrice()">
-                <input type="button" value="-" onclick="decrementValue('broccaVino')">
-                <input type="button" value="+" onclick="incrementValue('broccaVino')">
+                <label for="broccaVino">Brocca di vino 1L <span class="price">10€</span></label>
+                <div class="stepper">
+                    <input type="button" value="-" onclick="decrementValue('broccaVino')">
+                    <input type="number" id="broccaVino" name="broccaVino" min="0" value="0" onchange="calculateTotalPrice()">
+                    <input type="button" value="+" onclick="incrementValue('broccaVino')">
+                </div>
             </div>
 
             <!-- Acqua input -->
             <div class="form-group">
-                <label for="acqua">Acqua (1€):</label>
-                <input type="number" id="acqua" name="acqua" min="0" value="0" onchange="calculateTotalPrice()">
-                <input type="button" value="-" onclick="decrementValue('acqua')">
-                <input type="button" value="+" onclick="incrementValue('acqua')">
+                <label for="acqua">Acqua <span class="price">1€</span></label>
+                <div class="stepper">
+                    <input type="button" value="-" onclick="decrementValue('acqua')">
+                    <input type="number" id="acqua" name="acqua" min="0" value="0" onchange="calculateTotalPrice()">
+                    <input type="button" value="+" onclick="incrementValue('acqua')">
+                </div>
             </div>
 
             <!-- Bibite lattine input -->
             <div class="form-group">
-                <label for="bibiteLattine">Bibite lattine (3€):</label>
-                <input type="number" id="bibiteLattine" name="bibiteLattine" min="0" value="0" onchange="calculateTotalPrice()">
-                <input type="button" value="-" onclick="decrementValue('bibiteLattine')">
-                <input type="button" value="+" onclick="incrementValue('bibiteLattine')">
+                <label for="bibiteLattine">Bibite lattine <span class="price">3€</span></label>
+                <div class="stepper">
+                    <input type="button" value="-" onclick="decrementValue('bibiteLattine')">
+                    <input type="number" id="bibiteLattine" name="bibiteLattine" min="0" value="0" onchange="calculateTotalPrice()">
+                    <input type="button" value="+" onclick="incrementValue('bibiteLattine')">
+                </div>
             </div>
-
-            <!-- Total price display -->
-            <h2 class="total-price">Total Price: €0.00</h2>
         </form>
-
-        <!-- Reset button -->
-        <button type="button" onclick="resetForm()">Reset</button>
     </div>
 
-    <div class="counter">
-        Turno Arrosticini: <span id="counter">0</span>
-        <input type="button" value="-" onclick="decrementCounter()">
-        <input type="button" value="+" onclick="incrementCounter()">
+    <!-- Sticky total bar -->
+    <div class="total-bar">
+        <span class="total-price">Totale: €0.00</span>
+        <button type="button" class="reset-btn" onclick="resetForm()">Reset</button>
     </div>
-
 
     <!-- JavaScript code -->
     <script>
-        // Function to increment counter
-        function incrementCounter() {
-            var counter = parseInt(document.getElementById('counter').textContent);
-            counter++;
-            document.getElementById('counter').textContent = counter;
-        }
-
-        // Function to decrement counter
-        function decrementCounter() {
-            var counter = parseInt(document.getElementById('counter').textContent);
-            counter--;
-            document.getElementById('counter').textContent = counter;
-        }
-
         // Function to reset form
         function resetForm() {
             document.getElementById("gnocchi").value = 0;
@@ -192,7 +196,7 @@
             }
 
             // Update total price display
-            document.querySelector('.total-price').textContent = 'Total Price: €' + totalPrice.toFixed(2);
+            document.querySelector('.total-price').textContent = 'Totale: €' + totalPrice.toFixed(2);
         }
 
         // Function to increment value
