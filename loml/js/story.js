@@ -51,13 +51,13 @@ se stai leggendo questa lettera vuol dire che sei arrivata fino in fondo. Hai at
 
 Ci siamo conosciuti nel modo più strano del mondo: attraverso uno schermo, un messaggio dopo l'altro, spesso a orari assurdi. Eppure fin dall'inizio mi è sembrato di conoscerti da sempre. Ogni notifica col tuo nome era un aeroplanino di carta che atterrava proprio dove serviva.
 
-Poi c'è stata Roma. Vederti per la prima volta davvero, senza niente in mezzo. E quel primo bacio, che mi porto dietro ovunque vada.
+Poi c'è stata Roma. Vederti per la prima volta davvero, senza niente in mezzo. E quei baci, che mi porto dietro ovunque vada.
 
-Lo so che la distanza a volte pesa, che i chilometri sono tanti e che i "buonanotte" scritti non sono come quelli detti all'orecchio. Ma a ogni 23:23, a ogni 21:21, a ogni 00:00, il mio desiderio è sempre lo stesso, e comincia con la G.
+Lo so che la distanza a volte pesa, che i chilometri sono tanti e che i "buonanotte" scritti non sono come quelli detti all'orecchio. Ma a ogni 23:23, a ogni 00:00, il mio desiderio è sempre lo stesso, e sei TU.
 
 Tra la G e la L ci sono solo quattro lettere. Tra noi, d'ora in poi, voglio che ci sia ancora meno.
 
-Sei il mio girasole: io mi giro sempre verso di te.
+Sei il mio sole: io mi giro sempre verso di te.
 
 Ti amo,
 il tuo Lollo`;
