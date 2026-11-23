@@ -16,16 +16,16 @@ export const INTRO = [
 // Un messaggio per ogni aeroplanino (3 per zona, in ordine di zona).
 export const PLANES = [
   // Lacci
-  'Primo aeroplanino lanciato nella Rete. Se lo trovi... ciao! Sono Lollo. Mi piace un sacco come scrivi.',
+  'Primo aeroplanino lanciato nella Rete. Se lo trovi... ciao! Sono Lollo. Abbiamo proprio un bel feeling, io e te.',
   'Sono le 00:00. Tutti dormono e io sono ancora qui a scriverti. Strano, eh? Non mi sembra strano per niente.',
   'Oggi ho visto un girasole e ho pensato: si gira sempre verso la luce. Io mi giro verso il telefono, quando scrivi tu.',
   // Tortellandia
   'Ore 12:12. Desiderio: un pranzo con te. Anche solo un panino. Va bene anche senza panino.',
   'G come Geo, L come Lollo. Tra la G e la L ci sono solo quattro lettere: H, I, J, K. Praticamente niente.',
-  'Ho provato a contare i chilometri tra noi. Poi ho smesso: tanto li faccio tutti.',
+  'Ho provato a contare i chilometri tra noi. Poi ho smesso: prima o poi saranno 0.',
   // Giglia
   'Ore 23:23. Ho espresso un desiderio. Non te lo dico, ma comincia con la G.',
-  'Ogni volta che il telefono vibra spero che sia tu. Il 90% delle volte è mia nonna. Il 10% sei tu, ed è il 10% più bello della giornata.',
+  'Ogni volta che il telefono vibra spero che sia tu. Il 90% delle volte è mia mamma. Il 10% sei tu, ed è il 10% più bello della giornata.',
   'A Firenze non ci siamo mai stati. Ci verremo insieme: la cupola, il ponte con le botteghe e un gelato a testa. Anzi, due.',
   // Pendolina
   'Anche la torre pende. Io pendo verso di te. A Pisa non ci siamo mai stati: la foto mentre “reggiamo” la torre la facciamo insieme, promesso.',
@@ -38,7 +38,7 @@ export const PLANES = [
   // Terra dei Marsi
   'Benvenuta nella Terra dei Marsi! Qui le carote crescono a perdita d’occhio. Ne ho messe da parte alcune per te.',
   '23:23. Ci sei quasi. Ti sento arrivare.',
-  'Ultimo aeroplanino. Da domani non ne servono più: le cose te le dico di persona.',
+  'Ultimo aeroplanino. Ti aspetto a casa!',
 ];
 
 // ============================================================
