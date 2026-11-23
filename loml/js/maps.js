@@ -32,7 +32,7 @@ async function needPlanes() {
 
 // ---------------- personaggi che parlano ----------------
 export const SPEAKERS = {
-  geo: { name: 'Geo', art: 'geo', color: '#f2a93b', pitch: 0.6, bg: '#fff3d6' },
+  geo: { name: 'Gina', art: 'geo', color: '#f2a93b', pitch: 0.6, bg: '#fff3d6' },
   lollo: { name: 'Lollo', art: 'lollo', color: '#5fa77c', pitch: -0.2, bg: '#e6f5ea' },
   gareth: { name: 'Gareth', art: 'squirrel', color: '#8e88a0', pitch: 0.9 },
   gwen: { name: 'Gwen', art: 'mallard', color: '#3f8f6a', pitch: 0.5 },
@@ -106,7 +106,7 @@ const lacci = {
   map: lacciMap,
   spawn: { x: 4, y: 5, dir: 'down' },
   buildings: [
-    { x: 2, y: 1, w: 5, h: 4, style: 'brickhouse', door: { x: 4, y: 4 }, talk: read('Casa di Geo. Le tende sono chiuse e la teiera è al sicuro. Niente ripensamenti: si parte!') },
+    { x: 2, y: 1, w: 5, h: 4, style: 'brickhouse', door: { x: 4, y: 4 }, talk: read('Casa di Gina. Le tende sono chiuse e la teiera è al sicuro. Niente ripensamenti: si parte!') },
     { x: 11, y: 1, w: 7, h: 4, style: 'library', door: { x: 14, y: 4 }, talk: read('"La Biblioteca apre alle 10:10." Tutti i libri sono stati portati nel cortile qui accanto, chiusi in grosse casse.') },
     { x: 19, y: 10, w: 6, h: 3, style: 'theatre', door: { x: 21, y: 12 }, talk: read('In cartellone stasera: "Romeo e Giulietta... ma con i conigli, e stavolta finisce bene".') },
   ],
@@ -138,11 +138,11 @@ const lacci = {
     { id: 'duck2', kind: 'critter', art: 'duck', tx: 8, ty: 18, wander: 1, talk: chat('duck', ['Quack quack! (Sembra volerti augurare buon viaggio.)'], 'quack') },
     { id: 'pg1', kind: 'critter', art: 'pigeon', tx: 17, ty: 12, wander: 1.5, talk: chat('pigeon', ['Gru gru. Briciole? No? Allora gru.']) },
     { id: 'pg2', kind: 'critter', art: 'pigeon', tx: 16, ty: 13, wander: 1.5, talk: chat('pigeon', ['Gru. (Ti guarda con un occhio solo, con aria molto seria.)']) },
-    { id: 'bun1', kind: 'critter', art: 'bunnyGrey', tx: 10, ty: 9, wander: 1, talk: chat('bunny', ['Geo! Allora è vero che parti? Salutaci tanto Lollo!', 'Quando torni a trovarci portaci qualcosa di buono dall’Italia. Tipo il sole.']) },
+    { id: 'bun1', kind: 'critter', art: 'bunnyGrey', tx: 10, ty: 9, wander: 1, talk: chat('bunny', ['Gina! Allora è vero che parti? Salutaci tanto Lollo!', 'Quando torni a trovarci portaci qualcosa di buono dall’Italia. Tipo il sole.']) },
     { id: 'bf1', kind: 'deco', art: 'butterfly', tx: 6, ty: 13, butterfly: true, solid: false, col: '#b9a6f0' },
     { id: 'bf2', kind: 'deco', art: 'butterfly', tx: 26, ty: 4, butterfly: true, solid: false, col: '#f6a6c1' },
     { kind: 'deco', art: 'statue', variant: 'bunny', tx: 15, ty: 11, talk: read('"Sir Coniglio Shakesbunny, poeta di Lacci." Sotto c’è inciso: "Essere o non essere... insieme. Questo è il problema."'), ph: 52 },
-    { kind: 'deco', art: 'phonebox', tx: 11, ty: 11, talk: read('Una cabina telefonica rossa. Geo pensa a tutte le chiamate notturne con Lollo... e a quanto costerebbero da qui.'), ph: 56 },
+    { kind: 'deco', art: 'phonebox', tx: 11, ty: 11, talk: read('Una cabina telefonica rossa. Gina pensa a tutte le chiamate notturne con Lollo... e a quanto costerebbero da qui.'), ph: 56 },
     { kind: 'deco', art: 'bench', tx: 10, ty: 18, solid: true, talk: read('Una panchina bagnata. Come tutte le panchine di Lacci.') },
     { kind: 'lamp', tx: 13, ty: 9 }, { kind: 'lamp', tx: 17, ty: 9 }, { kind: 'lamp', tx: 8, ty: 7 }, { kind: 'lamp', tx: 24, ty: 9 },
     { kind: 'deco', art: 'bigPlane', tx: 25, ty: 21, big: 14, ph: 60, talk: gullTalk },
@@ -181,8 +181,8 @@ const lacci = {
 async function garethTalk() {
   if (!flag('gareth1')) {
     setFlag('gareth1');
-    await say('gareth', 'Geo! Buongiorno! Hai sentito che ventaccio stanotte?');
-    await say('gareth', 'Ha sparpagliato per tutta Lacci degli aeroplanini di carta. Sopra c’è scritto "Per Geo, da Lollo".');
+    await say('gareth', 'Gina! Buongiorno! Hai sentito che ventaccio stanotte?');
+    await say('gareth', 'Ha sparpagliato per tutta Lacci degli aeroplanini di carta. Sopra c’è scritto "Per Gina, da Lollo".');
     await say('geo', 'I messaggi di Lollo! Devo ritrovarli tutti!');
     await say('gareth', 'Uno l’ho visto planare verso lo stagno del parco, giù a sinistra. Un altro è finito nel cortile della biblioteca, quassù.');
     await say('gareth', 'E il terzo... temo che l’abbia preso Lord Biscotto, il bulldog che fa la guardia al porto. In basso a destra.');
@@ -285,7 +285,7 @@ const tortellandia = {
     { id: 'sf2', sid: 2, kind: 'sunflower', group: 'sf', rot: SF_START[2], tx: 26, ty: 17, link: [3], talk: sunTalk },
     { id: 'sf3', sid: 3, kind: 'sunflower', group: 'sf', rot: SF_START[3], tx: 28, ty: 17, link: [], talk: sunTalk },
     { kind: 'deco', art: 'car', tx: 27, ty: 10, solid: true, talk: read('Una macchinina rossa fiammante. Sul cofano qualcuno ha dipinto "G♥L". Chissà chi...'), ph: 34 },
-    { kind: 'deco', art: 'well', tx: 18, ty: 12, solid: true, talk: read('Un pozzo dei desideri. Geo ci guarda dentro e vede solo il suo riflesso... e un girasole tra le orecchie.') },
+    { kind: 'deco', art: 'well', tx: 18, ty: 12, solid: true, talk: read('Un pozzo dei desideri. Gina ci guarda dentro e vede solo il suo riflesso... e un girasole tra le orecchie.') },
     { kind: 'deco', art: 'pot', tx: 13, ty: 8, col: '#e05a5a' }, { kind: 'deco', art: 'pot', tx: 18, ty: 8, col: '#ffd23f' },
     { kind: 'deco', art: 'haystack', tx: 30, ty: 7, solid: true },
     { id: 'sqr1', kind: 'critter', art: 'squirrelRed', tx: 11, ty: 4, wander: 2, talk: chat('squirrelR', ['Squit! Qui a Tortellandia anche le ghiande sanno di parmigiano.', 'Hai sentito? Nonna Gilda regala tortellini a chi parte. Io parto ogni giorno, così ne prendo uno.']) },
@@ -426,7 +426,7 @@ const giglia = {
     { x: 28, y: 3, w: 4, h: 3, style: 'tuscan', wall: '#f5d39a', door: { x: 29, y: 5 }, talk: read('Una casetta color crema con le persiane verdi. Dalla finestra arriva il suono di un mandolino.') },
     { x: 15, y: 11, w: 1, h: 3, style: 'pvshops', walk: false },
     { x: 18, y: 11, w: 1, h: 3, style: 'pvshops', walk: false },
-    { x: 3, y: 15, w: 4, h: 3, style: 'tuscan', wall: '#f0c98e', door: { x: 4, y: 17 }, talk: read('"Bottega del Cuoio". In vetrina c’è un portafoglio a forma di carota. Geo resiste alla tentazione.') },
+    { x: 3, y: 15, w: 4, h: 3, style: 'tuscan', wall: '#f0c98e', door: { x: 4, y: 17 }, talk: read('"Bottega del Cuoio". In vetrina c’è un portafoglio a forma di carota. Gina resiste alla tentazione.') },
     { x: 8, y: 15, w: 4, h: 3, style: 'gallery', door: { x: 9, y: 17 }, talk: read('"Galleria dei Ritratti". C’è un quadro di un coniglio con un sorriso misterioso. Si chiama "La Giocondiglia".') },
   ],
   resets: { gal: { x: 24, y: 20, dir: 'up' } },
@@ -492,7 +492,7 @@ async function greyTalk() {
   await say('lino', 'E io sono Lino.');
   await say('gino', 'Insieme siamo...');
   await say('lino', '...Gino e Lino! G e L!');
-  await say('geo', 'G e L? Come Geo e Lollo!');
+  await say('geo', 'G e L? Come Gina e Lollo!');
   await say('gino', 'Davvero? Che coincidenza. Ad ogni modo: nessuno attraversa il Ponte Vecchio senza averci fatto le coccole.');
   await say('lino', 'Coccole sincronizzate. Una a lui e una a me, a tempo. Siamo molto precisi.');
   await mini('rhythm', { title: 'Coccole per Gino e Lino', sub: 'Due levrieri, il doppio delle coccole. Stai a tempo!', art: 'greyG', need: 5, speed: 1.0, zone: 0.22 });
@@ -726,7 +726,7 @@ async function gnappettaTalk() {
 }
 async function fountainTalk() {
   if (flag('fontana_done')) { await say(null, 'L’acqua della fontana brilla sotto la luna. In fondo luccica la tua monetina.'); return; }
-  if (!has('moneta')) { await say(null, 'Una fontana enorme, piena di monetine luccicanti. Si dice che chi ne lancia una torni sempre qui... Ma Geo non ha monete.'); return; }
+  if (!has('moneta')) { await say(null, 'Una fontana enorme, piena di monetine luccicanti. Si dice che chi ne lancia una torni sempre qui... Ma Gina non ha monete.'); return; }
   await say('geo', 'Mi giro di spalle... esprimo un desiderio... e lancio!');
   await mini('rhythm', { title: 'Lancia la monetina', sub: 'Tirala quando il cuore è nella zona!', art: 'geo', need: 1, speed: 1.1, zone: 0.16 });
   take('moneta'); setFlag('fontana_done'); sfx('splash');
@@ -817,7 +817,7 @@ const marsi = {
     { id: 'yumi', kind: 'npc', art: 'yumi', tx: flag('yumi_done') ? 22 : 24, ty: flag('yumi_done') ? 9 : 11, scale: 1.45, sleep: true, bw: 17, bh: 15, ph: 50, face: -1, noTurn: true, talk: yumiTalk },
     { kind: 'deco', art: 'rug', tx: 22, ty: 9, solid: false },
     { id: 'villager', kind: 'npc', art: 'bunnyBrown', tx: 18, ty: 14, dir: 'down', talk: chat('bunnyB', [
-      'Tu devi essere Geo! Lollo parla solo di te. Guarda l’orologio ogni cinque minuti.',
+      'Tu devi essere Gina! Lollo parla solo di te. Guarda l’orologio ogni cinque minuti.',
       'La casa di Lollo è di là dal ponte, a destra. Ma sul ponte dorme Yumi... auguri.',
     ]) },
     { id: 'hed', kind: 'critter', art: 'hedgehog', tx: 11, ty: 19, wander: 1.5, talk: chat('hedgehog', ['Di notte qui è pieno di lucciole. E di ricci. Soprattutto di ricci. Cioè io.']) },
@@ -932,7 +932,7 @@ async function yumiTalk(e) {
   await say('geo', 'Ehm... scusi? Signor Gatto? Dovrei passare...');
   e.sleep = false; sfx('meow'); emote(e, '!');
   await say('yumi', 'Mrrrrh. Chi osa svegliare Yumi, Custode del Ponte e del Divano?');
-  await say('geo', 'Sono Geo! Lollo mi aspetta, proprio di là!');
+  await say('geo', 'Sono Gina! Lollo mi aspetta, proprio di là!');
   await say('yumi', 'Lollo? Quello che mi dà le crocchette? Hmph. Il ponte è mio. Ci dormo da tre ore: è un record.');
   await say('yumi', 'Se vuoi passare, dovrai superare le Tre Prove di Yumi.');
   await say('yumi', 'Prima prova: la fame. Yumi ha fame. E Yumi NON mangia carote, prima che tu lo chieda.');
@@ -992,7 +992,7 @@ async function reunion() {
   const lollo = spawn({ id: 'lollo', kind: 'npc', art: 'lollo', tx: 29, ty: 7, dir: 'down', solid: false, alpha: 0 });
   sfx('gate');
   await fadeAlpha(lollo, 0, 1, 0.5);
-  await say('lollo', 'Geo...?');
+  await say('lollo', 'Gina...?');
   await say('geo', 'Lollo!');
   await moveEnt(lollo, 29, 8, 40);
   lollo.dir = 'down';
@@ -1004,7 +1004,7 @@ async function reunion() {
   await say('lollo', 'Sei arrivata davvero. Dalla Terra dei Regni, sopra il mare, fino a qui.');
   await say('geo', 'Ho seguito i tuoi aeroplanini. Tutti e diciotto.');
   if (G.follower) {
-    await say('lollo', 'Mia! Eccoti, ti ho cercata dappertutto! Sei andata a prendere Geo?');
+    await say('lollo', 'Mia! Eccoti, ti ho cercata dappertutto! Sei andata a prendere Gina?');
     sfx('woof');
     await say('geo', 'Mi ha fatto da guida per mezza Italia. Ha un ottimo padrone, si vede.');
   }

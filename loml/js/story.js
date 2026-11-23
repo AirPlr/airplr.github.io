@@ -6,11 +6,11 @@
 // ============================================================
 
 export const INTRO = [
-  { scene: 'lacci', text: 'C’era una volta, nella lontana Terra dei Regni, una coniglietta di nome Geo.' },
+  { scene: 'lacci', text: 'C’era una volta, nella lontana Terra dei Regni, una coniglietta di nome Gina.' },
   { scene: 'marsi', text: 'Dall’altra parte del mare, nella Terra dei Marsi, un coniglietto di nome Lollo guardava la luna e contava i giorni.' },
   { scene: 'planes', text: 'Si erano conosciuti in un modo tutto loro: lanciandosi aeroplanini di carta attraverso la grande Rete, a orari impossibili.' },
   { scene: 'wind', text: 'Ma una mattina il vento dei Regni ha sparpagliato gli ultimi aeroplanini di Lollo per tutto il villaggio di Lacci...' },
-  { scene: 'end', text: '...e Geo ha deciso: è ora di tornare a casa. Da lui.' },
+  { scene: 'end', text: '...e Gina ha deciso: è ora di tornare a casa. Da lui.' },
 ];
 
 // Un messaggio per ogni aeroplanino (3 per zona, in ordine di zona).
@@ -21,7 +21,7 @@ export const PLANES = [
   'Oggi ho visto un girasole e ho pensato: si gira sempre verso la luce. Io mi giro verso il telefono, quando scrivi tu.',
   // Tortellandia
   'Ore 12:12. Desiderio: un pranzo con te. Anche solo un panino. Va bene anche senza panino.',
-  'G come Geo, L come Lollo. Tra la G e la L ci sono solo quattro lettere: H, I, J, K. Praticamente niente.',
+  'G come Gina, L come Lollo. Tra la G e la L ci sono solo quattro lettere: H, I, J, K. Praticamente niente.',
   'Ho provato a contare i chilometri tra noi. Poi ho smesso: prima o poi saranno 0.',
   // Giglia
   'Ore 23:23. Ho espresso un desiderio. Non te lo dico, ma comincia con la G.',

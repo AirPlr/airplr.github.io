@@ -70,7 +70,7 @@ export class Title {
     sunflowerField(c, W, H, H * 0.78, this.t, u);
     const ty = H * 0.2;
     outlined(c, 'Il Volo di Carta', W / 2, ty, Math.min(56 * u, W / 9), '#fff7e0', A.INK, 9 * u);
-    text(c, 'il lungo viaggio di Geo verso casa', W / 2, ty + 40 * u, 16 * u, '#7a5060', 600);
+    text(c, 'il lungo viaggio di Gina verso casa', W / 2, ty + 40 * u, 16 * u, '#7a5060', 600);
     const bw = Math.min(280 * u, W - 60), bh = 46 * u;
     this.rects = this.items.map((it, i) => ({ x: W / 2 - bw / 2, y: ty + 66 * u + i * (bh + 12 * u), w: bw, h: bh }));
     this.items.forEach((it, i) => button(c, this.rects[i], it[1], { selected: this.sel === i, size: 17 * u }));
@@ -316,7 +316,7 @@ export class Letter {
       `Tempo di viaggio: ${s.time}`,
     ];
     lines.forEach((l, i) => text(c, l, W / 2, H * 0.58 + i * 26 * u, 16 * u, A.INK, 600));
-    text(c, 'Fatto con amore da Lollo, per Geo.', W / 2, H * 0.58 + 96 * u, 17 * u, '#d0506e', 700);
+    text(c, 'Fatto con amore da Lollo, per Gina.', W / 2, H * 0.58 + 96 * u, 17 * u, '#d0506e', 700);
     text(c, 'G ♥ L', W / 2, H * 0.58 + 124 * u, 22 * u, '#e9a12f', 700);
     const bw = 220 * u, bh = 42 * u;
     this.btn = { x: W / 2 - bw / 2, y: H - bh - 18 * u, w: bw, h: bh };

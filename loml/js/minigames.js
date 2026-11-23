@@ -227,10 +227,10 @@ export class Petting {
     c.save(); c.translate(ax, ay); c.scale(s, s);
     if (this.state === 'angry') c.translate(Math.sin(this.t * 70) * 0.8, 0);
     A.actor(c, this.o.art, 0, 0, { t: this.t, face: 1, dir: 'down', happy: this.state === 'calm' || won, sleep: false });
-    // zampina di Geo che accarezza
+    // zampina di Gina che accarezza
     if (this.petting || won) {
       const px = -3 + Math.sin(this.petT * 7) * 6, py = -22 + Math.cos(this.petT * 14) * 0.8;
-      A.E(c, px, py, 4.6, 3.4, '#fdf8f2'); A.fillE(c, px + 1, py + 0.8, 1.6, 1.2, '#f6a9bb');
+      A.E(c, px, py, 4.6, 3.4, '#d4a373'); A.fillE(c, px + 1, py + 0.8, 1.6, 1.2, '#f2b3a6');
     }
     c.restore();
     // fumetti
@@ -391,7 +391,7 @@ export class Flight {
       c.strokeStyle = '#ffe27a'; c.lineWidth = 2.5; c.stroke();
     }
     for (const f of this.fx) { c.globalAlpha = 1 - f.t / 0.8; A.heart(c, f.x, f.y - f.t * 50, 9 * u * (1 + f.t), '#ffb3c8', false); c.globalAlpha = 1; }
-    // aereo + Geo
+    // aereo + Gina
     const px = W * 0.24, py = top + this.y * ph;
     c.save(); c.translate(px, py); c.rotate(this.vy * 0.35);
     if (this.inv > 0 && Math.floor(this.inv * 10) % 2) c.globalAlpha = 0.5;
