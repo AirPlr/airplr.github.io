@@ -26,14 +26,14 @@ export const PLANES = [
   // Giglia
   'Ore 23:23. Ho espresso un desiderio. Non te lo dico, ma comincia con la G.',
   'Ogni volta che il telefono vibra spero che sia tu. Il 90% delle volte è mia nonna. Il 10% sei tu, ed è il 10% più bello della giornata.',
-  'Il giglio è il fiore di questa città, il girasole è il tuo fiore. E tu sei il mio.',
+  'A Firenze non ci siamo mai stati. Ci verremo insieme: la cupola, il ponte con le botteghe e un gelato a testa. Anzi, due.',
   // Pendolina
-  'Anche la torre pende. Io pendo verso di te. Qui pende un po’ tutto.',
+  'Anche la torre pende. Io pendo verso di te. A Pisa non ci siamo mai stati: la foto mentre “reggiamo” la torre la facciamo insieme, promesso.',
   'Ore 21:21: ti penso. Ore 21:22: ti penso ancora. A quanto pare funziona anche con gli orari normali.',
   'Quando torni ti aspetto con una coperta, un film e decisamente troppi snack.',
   // Amor
   'Roma letta al contrario fa Amor. Qualcuno lo sapeva da sempre.',
-  'Qui ti ho vista dal vivo per la prima volta. Più bella di qualsiasi foto, videochiamata o aeroplanino.',
+  'Qui ti ho vista dal vivo per la prima volta. Più bella di qualsiasi foto o aeroplanino.',
   'Il primo bacio. Me lo ricordo meglio di qualsiasi altra cosa. Anche meglio del mio numero di telefono.',
   // Terra dei Marsi
   'Benvenuta nella Terra dei Marsi! Qui le carote crescono a perdita d’occhio. Ne ho messe da parte alcune per te.',
@@ -45,7 +45,7 @@ export const PLANES = [
 //  LETTERA FINALE (bozza: cambiala come vuoi!)
 //  Le righe vuote separano i paragrafi.
 // ============================================================
-export const LETTER = `Cara Geo,
+export const LETTER = `Cara Georgina,
 
 se stai leggendo questa lettera vuol dire che sei arrivata fino in fondo. Hai attraversato la Terra dei Regni, hai volato sopra il mare su un aeroplanino di carta, hai calmato cani, convinto pecore e girasoli, e sei persino riuscita a spostare Yumi (cosa che nemmeno io sono mai riuscito a fare). E sei arrivata qui. Da me.
 

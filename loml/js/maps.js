@@ -374,8 +374,10 @@ async function mia1Talk(e) {
   sfx('woof'); emote(e, '!');
   await say('mia', 'Woof! Woof!');
   await say('geo', 'Ciao, cagnolina! Ma quello è un aeroplanino di Lollo? Me lo daresti?');
-  await say(null, 'Sulla medaglietta c’è scritto "MIA". La cagnolina scodinzola e fa una piroetta: vuole giocare!');
-  await say('geo', 'Mia, eh? Mia di chi? Va bene, giochiamo!');
+  await say(null, 'Sulla medaglietta c’è scritto "MIA — se mi trovi, riportami da Lollo".');
+  await say('geo', 'Mia?! Tu sei la cagnolina di Lollo! Mi ha parlato tantissimo di te. Che ci fai fin qui?');
+  await say(null, 'Mia scodinzola e fa una piroetta: vuole giocare!');
+  await say('geo', 'Va bene, giochiamo!');
   await mini('memory', { title: 'Mia vuole giocare!', sub: 'Ripeti i suoi trucchi', art: 'mia', rounds: [3, 4, 4], winMsg: 'Mia è al settimo cielo!' });
   setFlag('mia1');
   sfx('woof'); burst(e.x, e.y - 20, 'hearts', 8);
@@ -473,7 +475,7 @@ const giglia = {
     setFlag('arr_gig');
     await wait(0.5);
     await say('geo', 'Giglia! Quanti gigli... e quella cupola enorme laggiù!');
-    await say('geo', 'Lollo una volta mi ha detto che qui anche i piccioni hanno un senso artistico.');
+    await say('geo', 'Non ci sono mai stata... La prossima volta ci vengo con Lollo, mano nella mano.');
   },
   async onSolve(g) {
     if (g !== 'gal') return;
@@ -597,7 +599,7 @@ const pendolina = {
     setFlag('arr_pisa');
     await wait(0.5);
     await say('geo', 'Pendolina, al tramonto. Quella torre... pende davvero tantissimo!');
-    await say('geo', 'Speriamo che non cada proprio adesso.');
+    await say('geo', 'Qui non ci sono mai stata. Ci tornerò con Lollo, a fare la foto mentre la reggiamo insieme.');
   },
   async onSolve(g) {
     if (g !== 'torre') return;
@@ -632,7 +634,7 @@ async function stationTalk() {
 }
 async function mia2Talk(e) {
   sfx('woof'); emote(e, '!');
-  await say('geo', 'Mia! Di nuovo tu? Mi stai seguendo?');
+  await say('geo', 'Mia! Di nuovo tu? Ti ha mandata Lollo a controllarmi?');
   await say('mia', 'Woof! Woof woof!');
   await say(null, 'Mia ha in bocca un altro aeroplanino. Si mette in posizione da gioco: stavolta i trucchi saranno più difficili!');
   await mini('memory', { title: 'Mia vuole giocare ancora!', sub: 'Trucchi più lunghi, stavolta', art: 'mia', rounds: [4, 5, 5], winMsg: 'Mia ti adora!' });
@@ -736,10 +738,10 @@ async function mia3Talk(e) {
   sfx('woof');
   await say('geo', 'Mia! Sei arrivata fino ad Amor?');
   await say(null, 'Mia è stanca morta. Si siede, ti guarda con due occhioni enormi e ti porge da sola l’aeroplanino.');
-  await say('geo', 'Ti sei persa? ...Vuoi venire con me? Andiamo dove c’è Lollo.');
+  await say('geo', 'Sei stanca, eh? Vieni con me: ti riporto a casa, da Lollo.');
   sfx('woof'); emote(e, 'heart'); burst(e.x, e.y - 20, 'hearts', 12);
   await say(null, 'Mia abbaia felice e si mette a scodinzolare al tuo fianco. Adesso Mia viaggia con te!');
-  await say('geo', 'Mia di chi? Mia di Geo. Cioè... nostra.');
+  await say('geo', 'Andiamo dal tuo papà, Mia!');
   setFlag('mia_joined');
   G.follower = { art: 'mia', x: e.x, y: e.y, face: -1, moving: false, t: 0 };
   e.gone = true;
@@ -1001,9 +1003,9 @@ async function reunion() {
   await say('lollo', 'Sei arrivata davvero. Dalla Terra dei Regni, sopra il mare, fino a qui.');
   await say('geo', 'Ho seguito i tuoi aeroplanini. Tutti e diciotto.');
   if (G.follower) {
-    await say('lollo', 'E... chi è questa signorina a macchie?');
+    await say('lollo', 'Mia! Eccoti, ti ho cercata dappertutto! Sei andata a prendere Geo?');
     sfx('woof');
-    await say('geo', 'Lei è Mia. Mia di chi? Mia nostra.');
+    await say('geo', 'Mi ha fatto da guida per mezza Italia. Ha un ottimo padrone, si vede.');
   }
   await say('lollo', 'Allora ne manca solo uno. L’ultimo aeroplanino... questo te lo do a mano.');
   await say(null, 'Lollo ti porge una lettera, piegata con cura a forma di aeroplanino.');
