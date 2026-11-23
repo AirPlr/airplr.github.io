@@ -184,6 +184,7 @@ export const Sound = {
       case 'bump': tone(200, t, 0.15, 'sine', 0.2, sfxBus, 110); noise(t, 0.2, 800, 300, 0.08); break;
       case 'tick': tone(1400, t, 0.03, 'square', 0.03); break;
       case 'chime': ['C6', 'G5', 'E5', 'C5'].forEach((n, i) => { tone(nf(n), t + i * 0.55, 1.8, 'sine', 0.13); tone(nf(n) * 2.01, t + i * 0.55, 1.0, 'sine', 0.04); }); break;
+      case 'hiss': noise(t, 0.5, 2600, 4800, 0.16, 0.9); break;
       case 'purr': for (let i = 0; i < 6; i++) tone(70, t + i * 0.12, 0.1, 'sawtooth', 0.03); break;
       case 'baa': tone(380, t, 0.35, 'sawtooth', 0.035, sfxBus, 360); break;
       case 'sparkle': [0, 1, 2].forEach((i) => tone(nf('E7') * (1 + i * 0.12), t + i * 0.05, 0.12, 'sine', 0.05)); break;

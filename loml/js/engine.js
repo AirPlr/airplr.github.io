@@ -43,7 +43,7 @@ export function toast(txt) { G.toasts.push({ text: txt, t: 0, life: 2.8 }); }
 export function fadeOut(s = 0.45) { return new Promise((r) => { G.fadeTo = 1; G.fadeSpeed = 1 / s; G.fadeCb = r; }); }
 export function fadeIn(s = 0.45) { return new Promise((r) => { G.fadeTo = 0; G.fadeSpeed = 1 / s; G.fadeCb = r; }); }
 export function mini(kind, opts) {
-  const M = { rhythm: MG.Rhythm, memory: MG.Memory, clock: MG.ClockGame, flight: MG.Flight }[kind];
+  const M = { rhythm: MG.Rhythm, memory: MG.Memory, pet: MG.Petting, clock: MG.ClockGame, flight: MG.Flight }[kind];
   return new Promise((r) => { G.mini = new M(opts); G.mini.resolve = r; });
 }
 export function scene(sc) { return new Promise((r) => { G.scene = sc; sc.resolve = r; }); }

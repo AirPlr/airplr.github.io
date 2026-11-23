@@ -948,9 +948,10 @@ async function yumiTalk(e) {
     await say('geo', 'Ho solo... un sacco di affetto?');
     await say('yumi', 'Mmh. Accettabile. Per stavolta.');
   }
-  await say('yumi', 'Seconda prova: lo stretching. Copia i movimenti di Yumi, se ci riesci.');
-  await mini('memory', { title: 'Lo stretching di Yumi', sub: 'Copia i movimenti del gattone', art: 'yumi', rounds: [4, 5, 6], artScale: 0.75, winMsg: 'Yumi è colpito. Non lo ammetterà mai.' });
-  await say('yumi', 'Mmh. Flessibile, per essere una coniglietta.');
+  await say('yumi', 'Seconda prova: le coccole. Nessuno è mai riuscito ad accarezzare Yumi. Nemmeno Lollo.');
+  await say('yumi', 'Regola numero uno: quando Yumi apre un occhio, giù le zampe. Sennò graffio.');
+  await mini('pet', { title: 'Coccole a Yumi', sub: 'Accarezzalo, ma appena apre un occhio fermati!', art: 'yumi', need: 5, artScale: 0.75, winMsg: 'Yumi fa le fusa. Non lo ammetterà mai.' });
+  await say('yumi', '...Prrr. Non è successo niente. E non dirlo a Lollo.');
   await say('yumi', 'Terza prova: Yumi ha mangiato e si è stirato. Ora Yumi ha sonno. Cantagli una ninna nanna.');
   await mini('rhythm', { title: 'Ninna nanna per Yumi', sub: 'Accarezza il pancione a tempo di musica', art: 'yumi', need: 5, speed: 0.9, sleepy: true, artScale: 0.75, zoneCol: '#d6d2f2' });
   e.sleep = true; sfx('purr');

@@ -1,4 +1,4 @@
-// Mini-giochi: ritmo (coccole/ninna nanna), memoria (trucchi), orologio, volo.
+// Mini-giochi: ritmo (coccole/ninna nanna), memoria (trucchi), carezze, orologio, volo.
 import { Sound } from './audio.js';
 import * as A from './art.js';
 import { panel, button, text, wrap, font, COL, outlined } from './ui.js';
@@ -159,6 +159,97 @@ export class Memory {
       c.fillStyle = COL.ink; c.fill(); c.restore();
     }
     hintLine(c, r, u, 'Usa le frecce o tocca i pulsanti');
+  }
+}
+
+// ---------------- Carezze (per gatti permalosi) ----------------
+// Tieni premuto per accarezzare. Quando il gatto apre un occhio, fermati subito!
+export class Petting {
+  constructor(o) {
+    this.o = o; this.need = o.need || 5; this.love = 0; this.t = 0; this.done = false; this.endT = 0;
+    this.state = 'calm'; this.st = 0; this.dur = 2.2; this.shake = 0; this.petT = 0; this.fx = []; this.purrT = 0; this.angry = 0;
+  }
+  setState(s) {
+    this.state = s; this.st = 0;
+    if (s === 'calm') this.dur = 1.3 + Math.random() * 1.8 + (this.angry ? 0.4 : 0);
+    else if (s === 'alert') this.dur = 0.8 + Math.random() * 0.9;
+    else if (s === 'angry') this.dur = 1.3;
+  }
+  update(dt, input) {
+    this.t += dt; this.st += dt; this.shake = Math.max(0, this.shake - dt * 2.5);
+    for (const f of this.fx) { f.t += dt; f.y -= dt * 55; }
+    this.fx = this.fx.filter((f) => f.t < 1.2);
+    const petting = input.held.has('action') || input.pointer.down;
+    this.petting = petting && this.state !== 'angry';
+    if (this.endT > 0) {
+      this.endT -= dt; this.petT += dt;
+      if (Math.random() < dt * 6) this.fx.push({ x: (Math.random() - 0.5) * 90, y: 0, t: 0 });
+      if (this.endT <= 0) { this.done = true; this.result = true; }
+      return;
+    }
+    if (this.petting) this.petT += dt;
+    if (this.state === 'calm') {
+      if (petting) {
+        this.love = Math.min(1, this.love + dt / this.need);
+        this.purrT -= dt;
+        if (this.purrT <= 0) { Sound.sfx('purr'); this.purrT = 0.8; }
+        if (Math.random() < dt * 3) this.fx.push({ x: (Math.random() - 0.5) * 70, y: 0, t: 0 });
+        if (this.love >= 1) { this.endT = 1.8; Sound.sfx('purr'); setTimeout(() => Sound.sfx('success'), 200); return; }
+      }
+      if (this.st > this.dur) { this.setState('alert'); Sound.sfx('tick'); }
+    } else if (this.state === 'alert') {
+      // un attimo di tempo per reagire, poi guai a chi tocca
+      if (petting && this.st > 0.3) {
+        this.setState('angry'); this.angry++; this.shake = 1;
+        this.love = Math.max(0, this.love - 0.22);
+        Sound.sfx('hiss');
+      } else if (this.st > this.dur) this.setState('calm');
+    } else if (this.state === 'angry') {
+      if (this.st > this.dur) this.setState('calm');
+    }
+  }
+  draw(c, W, H, u) {
+    dimBg(c, W, H);
+    const r = card(W, H, u, 520, 480);
+    const sx = Math.sin(this.t * 60) * this.shake * 7;
+    c.save(); c.translate(sx, 0);
+    panel(c, r.x, r.y, r.w, r.h, 22 * u);
+    header(c, r, u, this.o.title, this.o.sub);
+    // barra dell'affetto
+    const bx = r.x + 40 * u, bw = r.w - 80 * u, by = r.y + r.h * 0.25, bh = 22 * u;
+    panel(c, bx, by, bw, bh, bh / 2, '#f4ece6', 2);
+    if (this.love > 0.01) { c.save(); A.rrPath(c, bx + 3, by + 3, (bw - 6) * this.love, bh - 6, (bh - 6) / 2); c.fillStyle = '#ffb3c8'; c.fill(); c.restore(); }
+    A.heart(c, bx + (bw - 6) * this.love + 3, by + bh / 2 + 2 * u, 12 * u, '#f06d8f');
+    // Yumi
+    const ax = r.x + r.w / 2, ay = r.y + r.h * 0.66;
+    const s = 4.2 * u * (this.o.artScale || 1) * (this.state === 'angry' ? 1.08 : 1);
+    const won = this.endT > 0;
+    c.save(); c.translate(ax, ay); c.scale(s, s);
+    if (this.state === 'angry') c.translate(Math.sin(this.t * 70) * 0.8, 0);
+    A.actor(c, this.o.art, 0, 0, { t: this.t, face: 1, dir: 'down', happy: this.state === 'calm' || won, sleep: false });
+    // zampina di Geo che accarezza
+    if (this.petting || won) {
+      const px = -3 + Math.sin(this.petT * 7) * 6, py = -22 + Math.cos(this.petT * 14) * 0.8;
+      A.E(c, px, py, 4.6, 3.4, '#fdf8f2'); A.fillE(c, px + 1, py + 0.8, 1.6, 1.2, '#f6a9bb');
+    }
+    c.restore();
+    // fumetti
+    if (this.state === 'alert' && !won) {
+      const b = 1 + Math.sin(this.t * 18) * 0.08;
+      text(c, '!', ax + 20 * s, ay - 34 * s, 34 * u * b, '#e2556a', 700);
+    }
+    if (this.state === 'angry') outlined(c, 'FSSST!', ax + 22 * s, ay - 36 * s, 24 * u, '#fff', '#c0394f', 5);
+    if ((this.state === 'calm' && this.petting) || won) text(c, 'prrr...', ax - 22 * s, ay - 30 * s - Math.sin(this.t * 3) * 3, 15 * u, '#a07a5a', 700);
+    for (const f of this.fx) { c.globalAlpha = Math.max(0, 1 - f.t); A.heart(c, ax + f.x * u, ay - 28 * s + f.y * u, 7 * u, COL.pink); c.globalAlpha = 1; }
+    // messaggio
+    let msg, col = COL.ink;
+    if (won) msg = this.o.winMsg || 'Fa le fusa!';
+    else if (this.state === 'angry') { msg = 'Ti avevo detto di no!'; col = '#d0506e'; }
+    else if (this.state === 'alert') { msg = 'Yumi apre un occhio... FERMA!'; col = '#d0506e'; }
+    else msg = this.petting ? 'Sta facendo le fusa... continua!' : 'È tranquillo... prova ad accarezzarlo.';
+    text(c, msg, ax, r.y + r.h - 50 * u, 16 * u, col, 600);
+    hintLine(c, r, u, 'Tieni premuto SPAZIO o il dito sullo schermo per accarezzare');
+    c.restore();
   }
 }
 
