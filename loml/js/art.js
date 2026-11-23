@@ -399,8 +399,8 @@ const BIRDS = {
 // ---------- dispatcher personaggi ----------
 export function actor(c, art, x, y, o = {}) {
   switch (art) {
-    case 'geo': return bunny(c, x, y, { fur: '#fdf8f2', inner: '#f6a9bb', acc: 'sunflower', ...o });
-    case 'lollo': return bunny(c, x, y, { fur: '#d4a373', inner: '#f2b3a6', belly: 'rgba(255,240,220,0.6)', acc: 'scarf', ...o });
+    case 'geo': return bunny(c, x, y, { fur: '#d4a373', inner: '#f2b3a6', belly: 'rgba(255,240,220,0.6)', acc: 'sunflower', ...o });
+    case 'lollo': return bunny(c, x, y, { fur: '#fdf8f2', inner: '#f6a9bb', acc: 'scarf', ...o });
     case 'hare': return bunny(c, x, y, { fur: '#c9a27c', inner: '#efb6a6', longEars: true, ...o });
     case 'bunnyGrey': return bunny(c, x, y, { fur: '#bdb6c4', inner: '#f2b3c3', ...o });
     case 'bunnyBrown': return bunny(c, x, y, { fur: '#9b7458', inner: '#f2b3a6', ...o });
@@ -934,7 +934,7 @@ function house(c, b, S, night) {
 export function drawBuilding(c, b, t, night, clockStr) {
   const px = b.x * 32, py = b.y * 32, pw = b.w * 32, ph = b.h * 32;
   switch (b.style) {
-    case 'brickhouse': house(c, b, { wall: '#c7705c', roof: '#5f6b85', frame: '#fff', door: '#e2556a', chimney: true, bricks: true, flowers: '#f6a6c1', sign: 'Casa di Geo ♥', signSize: 6.5 }, night); break;
+    case 'brickhouse': house(c, b, { wall: '#c7705c', roof: '#5f6b85', frame: '#fff', door: '#e2556a', chimney: true, bricks: true, flowers: '#f6a6c1', sign: 'Casa di Gina ♥', signSize: 6.5 }, night); break;
     case 'terrace': house(c, b, { wall: b.wall || '#b9654f', roof: '#59647d', frame: '#fff', door: b.doorC || '#3d6fb0', chimney: true, bricks: true }, night); break;
     case 'library': {
       house(c, b, { wall: '#b85c4c', roof: '#6b7896', frame: '#f5efe2', door: '#5a3b2e', bricks: true, sign: 'BIBLIOTECA', signSize: 8, roofFrac: 0.4 }, night);

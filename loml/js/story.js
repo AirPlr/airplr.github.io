@@ -6,46 +6,46 @@
 // ============================================================
 
 export const INTRO = [
-  { scene: 'lacci', text: 'C’era una volta, nella lontana Terra dei Regni, una coniglietta di nome Geo.' },
+  { scene: 'lacci', text: 'C’era una volta, nella lontana Terra dei Regni, una coniglietta di nome Gina.' },
   { scene: 'marsi', text: 'Dall’altra parte del mare, nella Terra dei Marsi, un coniglietto di nome Lollo guardava la luna e contava i giorni.' },
   { scene: 'planes', text: 'Si erano conosciuti in un modo tutto loro: lanciandosi aeroplanini di carta attraverso la grande Rete, a orari impossibili.' },
   { scene: 'wind', text: 'Ma una mattina il vento dei Regni ha sparpagliato gli ultimi aeroplanini di Lollo per tutto il villaggio di Lacci...' },
-  { scene: 'end', text: '...e Geo ha deciso: è ora di tornare a casa. Da lui.' },
+  { scene: 'end', text: '...e Gina ha deciso: è ora di tornare a casa. Da lui.' },
 ];
 
 // Un messaggio per ogni aeroplanino (3 per zona, in ordine di zona).
 export const PLANES = [
   // Lacci
-  'Primo aeroplanino lanciato nella Rete. Se lo trovi... ciao! Sono Lollo. Mi piace un sacco come scrivi.',
+  'Primo aeroplanino lanciato nella Rete. Se lo trovi... ciao! Sono Lollo. Abbiamo proprio un bel feeling, io e te.',
   'Sono le 00:00. Tutti dormono e io sono ancora qui a scriverti. Strano, eh? Non mi sembra strano per niente.',
   'Oggi ho visto un girasole e ho pensato: si gira sempre verso la luce. Io mi giro verso il telefono, quando scrivi tu.',
   // Tortellandia
   'Ore 12:12. Desiderio: un pranzo con te. Anche solo un panino. Va bene anche senza panino.',
-  'G come Geo, L come Lollo. Tra la G e la L ci sono solo quattro lettere: H, I, J, K. Praticamente niente.',
-  'Ho provato a contare i chilometri tra noi. Poi ho smesso: tanto li faccio tutti.',
+  'G come Gina, L come Lollo. Tra la G e la L ci sono solo quattro lettere: H, I, J, K. Praticamente niente.',
+  'Ho provato a contare i chilometri tra noi. Poi ho smesso: prima o poi saranno 0.',
   // Giglia
   'Ore 23:23. Ho espresso un desiderio. Non te lo dico, ma comincia con la G.',
-  'Ogni volta che il telefono vibra spero che sia tu. Il 90% delle volte è mia nonna. Il 10% sei tu, ed è il 10% più bello della giornata.',
-  'Il giglio è il fiore di questa città, il girasole è il tuo fiore. E tu sei il mio.',
+  'Ogni volta che il telefono vibra spero che sia tu. Il 90% delle volte è mia mamma. Il 10% sei tu, ed è il 10% più bello della giornata.',
+  'A Firenze non ci siamo mai stati. Ci verremo insieme: la cupola, il ponte con le botteghe e un gelato a testa. Anzi, due.',
   // Pendolina
-  'Anche la torre pende. Io pendo verso di te. Qui pende un po’ tutto.',
+  'Anche la torre pende. Io pendo verso di te. A Pisa non ci siamo mai stati: la foto mentre “reggiamo” la torre la facciamo insieme, promesso.',
   'Ore 21:21: ti penso. Ore 21:22: ti penso ancora. A quanto pare funziona anche con gli orari normali.',
   'Quando torni ti aspetto con una coperta, un film e decisamente troppi snack.',
   // Amor
   'Roma letta al contrario fa Amor. Qualcuno lo sapeva da sempre.',
-  'Qui ti ho vista dal vivo per la prima volta. Più bella di qualsiasi foto, videochiamata o aeroplanino.',
+  'Qui ti ho vista dal vivo per la prima volta. Più bella di qualsiasi foto o aeroplanino.',
   'Il primo bacio. Me lo ricordo meglio di qualsiasi altra cosa. Anche meglio del mio numero di telefono.',
   // Terra dei Marsi
   'Benvenuta nella Terra dei Marsi! Qui le carote crescono a perdita d’occhio. Ne ho messe da parte alcune per te.',
   '23:23. Ci sei quasi. Ti sento arrivare.',
-  'Ultimo aeroplanino. Da domani non ne servono più: le cose te le dico di persona.',
+  'Ultimo aeroplanino. Ti aspetto a casa!',
 ];
 
 // ============================================================
 //  LETTERA FINALE (bozza: cambiala come vuoi!)
 //  Le righe vuote separano i paragrafi.
 // ============================================================
-export const LETTER = `Cara Geo,
+export const LETTER = `Cara Georgina,
 
 se stai leggendo questa lettera vuol dire che sei arrivata fino in fondo. Hai attraversato la Terra dei Regni, hai volato sopra il mare su un aeroplanino di carta, hai calmato cani, convinto pecore e girasoli, e sei persino riuscita a spostare Yumi (cosa che nemmeno io sono mai riuscito a fare). E sei arrivata qui. Da me.
 
